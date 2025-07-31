@@ -7,7 +7,7 @@ on:
 
 env:
   GODOT_VERSION: 4.3
-  EXPORT_NAME: PirateJam16
+  EXPORT_NAME: GMTK2025
   PROJECT_PATH: .
 
 jobs:
