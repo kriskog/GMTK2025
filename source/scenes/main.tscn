@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://e50fh6k7jo6y"]
 
-[ext_resource type="PackedScene" uid="uid://dlxjo3aeddn6q" path="res://scenes/placeholder.tscn" id="1_s1cym"]
+[ext_resource type="PackedScene" uid="uid://dlxjo3aeddn6q" path="res://source/scenes/placeholder.tscn" id="1_s1cym"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,3 +13,4 @@ color = Color(0.431373, 0.556863, 0.831373, 1)
 [node name="Placeholder" parent="." instance=ExtResource("1_s1cym")]
 position = Vector2(960, 540)
 scale = Vector2(0.3, 0.304)
+script = null
