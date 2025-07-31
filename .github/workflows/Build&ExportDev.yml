@@ -7,13 +7,13 @@ on:
 
 env:
   GODOT_VERSION: 4.3
-  EXPORT_NAME: PirateJam16-dev
+  EXPORT_NAME: gmtk2025-dev
   PROJECT_PATH: .
 
 jobs:
   export-windows:
     name: Windows Export
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:4.3
     steps:
@@ -42,7 +42,7 @@ jobs:
 
   export-web:
     name: Web Export
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:4.3
     steps:
@@ -71,7 +71,7 @@ jobs:
     needs:
       [export-windows, export-web]
     name: Push to itch.io
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Download
         uses: actions/download-artifact@v4
