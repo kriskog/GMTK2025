@@ -27,27 +27,33 @@ extends Node
 	Global.stats.SPEED: 0,
 	Global.stats.MAGIC: 0,
 }
-var isTurn: bool = false :
-	get: return isTurn
-	set(value): isTurn = value 
+var is_turn: bool = false:
+	get:
+		return is_turn
+	set(value):
+		is_turn = value
 #endregion
 
 #region OnReadyVars
 #endregion
 
+
 #region BuiltinMethods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass  # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
+
+
 #endregion
 
+
 #region PublicMethods
-func UpdateStat(stat: Global.stats, value: int) -> void:
+func update_state(stat: Global.stats, value: int) -> void:
 	stats[stat] += value
 #endregion
 
