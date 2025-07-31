@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  LINT_PATH: ./source/
+
+jobs:
+  static-checks:
+    name: 'Static checks'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: Scony/godot-gdscript-toolkit@master
+    - run: gdformat $LINT_PATH --check
+    - run: gdlint $LINT_PATH
+  
+  test:
+    name: 'Godot Unit Test'
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run GUT tests
+        run: |
+          godot --headless --import
+          godot --headless -s --path "$PWD" addons/gut/gut_cmdln.gd -gexit
