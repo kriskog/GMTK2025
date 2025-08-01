@@ -1,104 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://e50fh6k7jo6y"]
+[gd_scene load_steps=3 format=3 uid="uid://e50fh6k7jo6y"]
 
 [ext_resource type="Script" path="res://source/scenes/main.gd" id="1_6rv6f"]
-[ext_resource type="PackedScene" uid="uid://dlxjo3aeddn6q" path="res://source/scenes/placeholder.tscn" id="1_s1cym"]
-[ext_resource type="PackedScene" uid="uid://dkktxruckx1pq" path="res://source/base_classes/character_node.tscn" id="3_ixb1x"]
-[ext_resource type="Script" path="res://source/base_classes/ability.gd" id="4_xvu8j"]
+[ext_resource type="PackedScene" uid="uid://b4dnm8piv8tvd" path="res://source/scenes/ui/menus/main_menu.tscn" id="2_x4avv"]
 
-[sub_resource type="Resource" id="Resource_aeqic"]
-script = ExtResource("4_xvu8j")
-name = "Melee"
-mana_cost = 0
-target = 1
-base_damage = 2
-damage_attribute = 4
-
-[sub_resource type="Resource" id="Resource_ojelb"]
-script = ExtResource("4_xvu8j")
-name = "Fire"
-mana_cost = 2
-target = 1
-base_damage = 3
-damage_attribute = 7
-
-[sub_resource type="Resource" id="Resource_6oxbp"]
-script = ExtResource("4_xvu8j")
-name = "Kill"
-mana_cost = 0
-target = 1
-base_damage = 10
-damage_attribute = 4
-
-[node name="Main" type="Node2D"]
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_6rv6f")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(1920, 1080)
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.431373, 0.556863, 0.831373, 1)
-
-[node name="Placeholder" parent="." instance=ExtResource("1_s1cym")]
-position = Vector2(1044, 961)
-scale = Vector2(0.3, 0.304)
-script = null
-
-[node name="PlayableCharacter" parent="." instance=ExtResource("3_ixb1x")]
-position = Vector2(1462, 574)
-scale = Vector2(0.5, 0.5)
-stats = {
-0: 30,
-1: 30,
-2: 5,
-3: 5,
-4: 5,
-5: 5,
-6: 5,
-7: 8
-}
-abilities = Array[ExtResource("4_xvu8j")]([SubResource("Resource_aeqic"), SubResource("Resource_ojelb")])
-
-[node name="Label" type="Label" parent="PlayableCharacter"]
-offset_left = -350.0
-offset_top = -654.0
-offset_right = -38.0
-offset_bottom = -553.0
-text = "player status"
-
-[node name="EnemyCharacter" parent="." instance=ExtResource("3_ixb1x")]
-position = Vector2(496, 519)
-stats = {
-0: 100,
-1: 100,
-2: 20,
-3: 20,
-4: 5,
-5: 5,
-6: 5,
-7: 5
-}
-abilities = Array[ExtResource("4_xvu8j")]([SubResource("Resource_6oxbp")])
-
-[node name="attack_test" type="Button" parent="EnemyCharacter"]
-offset_left = 816.0
-offset_top = 237.0
-offset_right = 947.0
-offset_bottom = 371.0
-text = "attack"
-
-[node name="magic_test" type="Button" parent="EnemyCharacter"]
-offset_left = 970.0
-offset_top = 237.0
-offset_right = 1101.0
-offset_bottom = 371.0
-text = "magic"
-
-[node name="Label" type="Label" parent="EnemyCharacter"]
-offset_left = -174.0
-offset_top = -464.0
-offset_right = 160.0
-offset_bottom = -311.0
-text = "boss stats"
-
-[connection signal="pressed" from="EnemyCharacter/attack_test" to="." method="_on_attack_test_pressed"]
-[connection signal="pressed" from="EnemyCharacter/magic_test" to="." method="_on_magic_test_pressed"]
+[node name="MainMenu" parent="." instance=ExtResource("2_x4avv")]
+layout_mode = 1
