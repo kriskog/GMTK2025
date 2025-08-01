@@ -63,7 +63,7 @@ func _ability_pressed(id: int) -> void:
 	_chosen_ability = id
 	var mana_cost = character.abilities[id].mana_cost
 	var target = character.abilities[id].target
-	if !character.spend_mana(mana_cost):
+	if mana_cost > character.stats[Global.Stats.MANA]:
 		print("Not enough mana!!!")
 		_chosen_ability = -1
 	else:
