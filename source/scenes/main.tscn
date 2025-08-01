@@ -1,48 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://e50fh6k7jo6y"]
+[gd_scene load_steps=6 format=3 uid="uid://e50fh6k7jo6y"]
 
 [ext_resource type="Script" path="res://source/scenes/main.gd" id="1_6rv6f"]
-[ext_resource type="PackedScene" uid="uid://dlxjo3aeddn6q" path="res://source/scenes/placeholder.tscn" id="1_s1cym"]
-[ext_resource type="PackedScene" path="res://source/base_classes/character_node.tscn" id="3_ixb1x"]
+[ext_resource type="PackedScene" uid="uid://dkktxruckx1pq" path="res://source/base_classes/character_node.tscn" id="3_ixb1x"]
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="4_xvu8j"]
 [ext_resource type="PackedScene" uid="uid://rs745h5p7tkc" path="res://source/base_classes/combat_menu.tscn" id="5_mmahm"]
 
-[sub_resource type="Resource" id="Resource_aeqic"]
+[sub_resource type="Resource" id="Resource_be14m"]
 script = ExtResource("4_xvu8j")
-name = "Melee"
-mana_cost = 0
-target = 1
-base_damage = 2
-damage_attribute = 4
-
-[sub_resource type="Resource" id="Resource_ojelb"]
-script = ExtResource("4_xvu8j")
-name = "Fire"
+name = "Flame"
 mana_cost = 2
 target = 1
-base_damage = 3
+base_damage = 4
 damage_attribute = 7
 
-[sub_resource type="Resource" id="Resource_6oxbp"]
-script = ExtResource("4_xvu8j")
-name = "Kill"
-mana_cost = 0
-target = 1
-base_damage = 10
-damage_attribute = 4
-
-[node name="Main" type="Node2D"]
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_6rv6f")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.431373, 0.556863, 0.831373, 1)
-
-[node name="Placeholder" parent="." instance=ExtResource("1_s1cym")]
-position = Vector2(1044, 961)
-scale = Vector2(0.3, 0.304)
-script = null
 
 [node name="PlayableCharacter" parent="." instance=ExtResource("3_ixb1x")]
 position = Vector2(1462, 574)
@@ -57,7 +42,7 @@ stats = {
 6: 5,
 7: 8
 }
-abilities = Array[ExtResource("4_xvu8j")]([SubResource("Resource_aeqic"), SubResource("Resource_ojelb")])
+abilities = Array[ExtResource("4_xvu8j")]([SubResource("Resource_be14m")])
 character_name = "Garb"
 
 [node name="Label" type="Label" parent="PlayableCharacter"]
@@ -84,7 +69,6 @@ stats = {
 6: 5,
 7: 5
 }
-abilities = Array[ExtResource("4_xvu8j")]([SubResource("Resource_6oxbp")])
 character_name = "Blade"
 
 [node name="attack_test" type="Button" parent="EnemyCharacter"]
