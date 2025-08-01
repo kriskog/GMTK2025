@@ -48,6 +48,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+
 #endregion
 
 
@@ -71,8 +73,8 @@ func spend_mana(val: int) -> bool:
 		update_state(Global.stats.MANA, -val)
 		return true
 	return false
-	
-	
+
+
 func use_ability_on_target(num: int, target: Character) -> void:
 	var attack_ability: Ability = abilities[num]
 	if spend_mana(attack_ability.mana_cost):

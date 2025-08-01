@@ -5,7 +5,7 @@ extends Resource
 #endregion
 
 #region Enums
-enum Target {ALLY, ENEMY}
+enum Target { ALLY, ENEMY }
 #endregion
 
 #region Constants
@@ -30,6 +30,7 @@ enum Target {ALLY, ENEMY}
 
 #region BuiltinMethods
 #endregion
+
 
 #region PublicMethods
 func get_total_damage(bonus: int) -> int:
