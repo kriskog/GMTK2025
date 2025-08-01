@@ -102,7 +102,8 @@ func _on_enemy_list_item_clicked(
 	enemy_list.visible = false
 	_chosen_ability = -1
 	_basic_attack = false
-	
+
+
 func _on_defend_pressed() -> void:
 	character.defending = true
 	ally_list.visible = false
