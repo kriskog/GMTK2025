@@ -57,9 +57,18 @@ func _process(_delta: float) -> void:
 #region PublicMethods
 #endregion
 
-
 #region PrivateMethods
+
+
+func _reset_menu() -> void:
+	ally_list.visible = false
+	enemy_list.visible = false
+	_chosen_ability = -1
+	_basic_attack = false
+
+
 func _ability_pressed(id: int) -> void:
+	_reset_menu()
 	_chosen_ability = id
 	var mana_cost = character.abilities[id].mana_cost
 	var target = character.abilities[id].target
@@ -74,6 +83,7 @@ func _ability_pressed(id: int) -> void:
 
 
 func _on_attack_pressed() -> void:
+	_reset_menu()
 	_basic_attack = true
 	enemy_list.visible = true
 
@@ -82,32 +92,23 @@ func _on_ally_list_item_clicked(
 	index: int, _at_position: Vector2, _mouse_button_index: int
 ) -> void:
 	if _basic_attack:
-		character.basic_attack(allies[index])
+		character.use_ability_on_target(character.BASIC_ATTACK_INDEX, allies[index])
 	else:
 		character.use_ability_on_target(_chosen_ability, allies[index])
-	ally_list.visible = false
-	enemy_list.visible = false
-	_chosen_ability = -1
-	_basic_attack = false
+	_reset_menu()
 
 
 func _on_enemy_list_item_clicked(
 	index: int, _at_position: Vector2, _mouse_button_index: int
 ) -> void:
 	if _basic_attack:
-		character.basic_attack(enemies[index])
+		character.use_ability_on_target(character.BASIC_ATTACK_INDEX, enemies[index])
 	else:
 		character.use_ability_on_target(_chosen_ability, enemies[index])
-	ally_list.visible = false
-	enemy_list.visible = false
-	_chosen_ability = -1
-	_basic_attack = false
+	_reset_menu()
 
 
 func _on_defend_pressed() -> void:
+	_reset_menu()
 	character.defending = true
-	ally_list.visible = false
-	enemy_list.visible = false
-	_chosen_ability = -1
-	_basic_attack = false
 #endregion

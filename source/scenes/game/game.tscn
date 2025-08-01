@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dkktxruckx1pq" path="res://source/base_classes/character_node.tscn" id="2_bdwci"]
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="3_6wv2w"]
 [ext_resource type="PackedScene" uid="uid://bh3gawj40w8gw" path="res://source/scenes/ui/menus/pause_menu.tscn" id="3_05073"]
-[ext_resource type="PackedScene" path="res://source/base_classes/combat_menu.tscn" id="4_h3sjs"]
+[ext_resource type="PackedScene" uid="uid://rs745h5p7tkc" path="res://source/base_classes/combat_menu.tscn" id="4_h3sjs"]
 [ext_resource type="FontFile" uid="uid://byi1bnbahet5u" path="res://assets/fonts/press start 2p/press-start-2p-latin-400-normal.ttf" id="5_1t1lk"]
 [ext_resource type="Script" path="res://source/scenes/game/pause_button.gd" id="6_brkmx"]
 
