@@ -71,7 +71,7 @@ func get_ability_damage(ability: Ability) -> int:
 
 func take_damage(val: int) -> void:
 	# Take an amount of damage to health
-	var damage_taken = val if !defending else val/2
+	var damage_taken = val if !defending else val / 2
 	update_state(Global.Stats.HEALTH, -damage_taken)
 	update_state(Global.Stats.HEALTH, -val)
 
@@ -89,6 +89,7 @@ func use_ability_on_target(num: int, target: Character) -> void:
 	if spend_mana(attack_ability.mana_cost):
 		var attack_damage: int = get_ability_damage(attack_ability)
 		target.take_damage(attack_damage)
+
 
 func basic_attack(target: Character) -> void:
 	var damage = 500
