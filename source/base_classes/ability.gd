@@ -16,7 +16,7 @@ enum Target { ALLY, ENEMY }
 @export var mana_cost: int = 0
 @export var target: Target = Target.ENEMY
 @export var base_damage: int = 0
-@export var damage_attribute: Global.stats = Global.stats.STRENGTH
+@export var damage_attribute: Global.Stats = Global.Stats.STRENGTH
 #endregion
 
 #region PublicVars

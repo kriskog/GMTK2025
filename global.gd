@@ -1,3 +1,0 @@
-extends Node
-
-enum stats {MAX_HEALTH, HEALTH, MAX_MANA, MANA, STRENGTH, DEXTERITY, SPEED, MAGIC}

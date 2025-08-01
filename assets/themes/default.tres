@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cn762radik7xw"]
+
+[ext_resource type="FontFile" uid="uid://byi1bnbahet5u" path="res://assets/fonts/press start 2p/press-start-2p-latin-400-normal.ttf" id="1_wfaso"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4g770"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej4fv"]
+bg_color = Color(0.827451, 0.827451, 0.827451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu1na"]
+bg_color = Color(0.466667, 0, 0.0705882, 1)
+
+[resource]
+default_font = ExtResource("1_wfaso")
+Button/colors/font_color = Color(0.687216, 0.687215, 0.687215, 1)
+Button/colors/font_focus_color = Color(0.713726, 0, 0.0235294, 1)
+Button/colors/font_hover_color = Color(0.713726, 0, 0.0235294, 1)
+Button/colors/font_hover_pressed_color = Color(0.455081, 0, 0.00878778, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.454902, 0, 0.00784314, 1)
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 48
+Button/styles/focus = SubResource("StyleBoxEmpty_4g770")
+Label/colors/font_color = Color(0.465633, 0, 0.0687849, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 20
+Label/font_sizes/font_size = 80
+ProgressBar/colors/font_color = Color(0, 0, 0, 1)
+ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
+ProgressBar/constants/outline_size = 5
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ej4fv")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_qu1na")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 5
