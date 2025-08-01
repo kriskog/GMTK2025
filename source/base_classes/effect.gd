@@ -2,7 +2,6 @@ class_name Effect
 extends EffectBase
 """This is an active instance of an effect, which has a duration."""
 
-
 #region Signals
 #endregion
 
@@ -35,6 +34,7 @@ func _init(effect_base: EffectBase) -> void:
 	self.damage_attribute = effect_base.damage_attribute
 
 	cur_duration = max_duration
+
 
 #endregion
 

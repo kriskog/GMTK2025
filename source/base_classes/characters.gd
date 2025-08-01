@@ -71,10 +71,9 @@ func get_effect_bonuses(stat: Global.Stats) -> int:
 		total += effect.get_stat_bonus(stat)
 	return total
 
+
 func get_ability_damage(ability: Ability) -> int:
-	return ability.get_total_damage(
-		get_stat_total(ability.damage_attribute)
-	)
+	return ability.get_total_damage(get_stat_total(ability.damage_attribute))
 
 
 func take_damage(val: int) -> void:
@@ -84,7 +83,6 @@ func take_damage(val: int) -> void:
 
 func spend_mana(val: int) -> bool:
 	# This succeeds if there's enough mana to pay the cost, and only spends the mana if so
-	# Mana probably shouldn't be getting temp buffs, so this checks against the raw stat.
 	if val <= get_effect_bonuses(Global.Stats.MANA):
 		update_state(Global.Stats.MANA, -val)
 		return true
@@ -94,7 +92,6 @@ func spend_mana(val: int) -> bool:
 func use_ability_on_target(num: int, target: Character) -> void:
 	var used_ability: Ability = abilities[num]
 	if spend_mana(used_ability.mana_cost):
-
 		if used_ability.deals_damage:
 			var attack_damage: int = get_ability_damage(used_ability)
 			target.take_damage(attack_damage)
@@ -103,9 +100,7 @@ func use_ability_on_target(num: int, target: Character) -> void:
 			var effect: Effect = Effect.new(used_ability.effect_base)
 
 			if effect.damage_over_time and effect.damage_attribute != null:
-				effect.add_damage(
-					get_stat_total(effect.damage_attribute)
-				)
+				effect.add_damage(get_stat_total(effect.damage_attribute))
 
 			target.add_effect(effect)
 

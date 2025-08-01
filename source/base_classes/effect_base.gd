@@ -5,7 +5,6 @@ This is the base attributes of an effect, which needs to be instantiated and
 applied to a character.
 """
 
-
 #region Signals
 #endregion
 
@@ -41,7 +40,6 @@ applied to a character.
 
 #region OnReadyVars
 #endregion
-
 
 #region BuiltinMethods
 #endregion
