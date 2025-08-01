@@ -4,11 +4,12 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_labels()
+	$PlayableCharacter.is_turn = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	update_labels()
 
 
 ### THESE ARE TEMPORARY, REPLACE THESE EVENTUALLY
@@ -19,28 +20,28 @@ func update_labels() -> void:
 	$EnemyCharacter/Label.text = (
 		("HP: %d/%d\n" + "MP: %d/%d\n" + "STR: %d\n" + "DEX: %d\n" + "MAG: %d\n" + "SPD: %d")
 		% [
-			boss.stats[Global.stats.HEALTH],
-			boss.stats[Global.stats.MAX_HEALTH],
-			boss.stats[Global.stats.MANA],
-			boss.stats[Global.stats.MAX_MANA],
-			boss.stats[Global.stats.STRENGTH],
-			boss.stats[Global.stats.DEXTERITY],
-			boss.stats[Global.stats.MAGIC],
-			boss.stats[Global.stats.SPEED]
+			boss.stats[Global.Stats.HEALTH],
+			boss.stats[Global.Stats.MAX_HEALTH],
+			boss.stats[Global.Stats.MANA],
+			boss.stats[Global.Stats.MAX_MANA],
+			boss.stats[Global.Stats.STRENGTH],
+			boss.stats[Global.Stats.DEXTERITY],
+			boss.stats[Global.Stats.MAGIC],
+			boss.stats[Global.Stats.SPEED]
 		]
 	)
 
 	$PlayableCharacter/Label.text = (
 		("HP: %d/%d\n" + "MP: %d/%d\n" + "STR: %d\n" + "DEX: %d\n" + "MAG: %d\n" + "SPD: %d")
 		% [
-			player.stats[Global.stats.HEALTH],
-			player.stats[Global.stats.MAX_HEALTH],
-			player.stats[Global.stats.MANA],
-			player.stats[Global.stats.MAX_MANA],
-			player.stats[Global.stats.STRENGTH],
-			player.stats[Global.stats.DEXTERITY],
-			player.stats[Global.stats.MAGIC],
-			player.stats[Global.stats.SPEED]
+			player.stats[Global.Stats.HEALTH],
+			player.stats[Global.Stats.MAX_HEALTH],
+			player.stats[Global.Stats.MANA],
+			player.stats[Global.Stats.MAX_MANA],
+			player.stats[Global.Stats.STRENGTH],
+			player.stats[Global.Stats.DEXTERITY],
+			player.stats[Global.Stats.MAGIC],
+			player.stats[Global.Stats.SPEED]
 		]
 	)
 

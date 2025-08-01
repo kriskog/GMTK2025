@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://rs745h5p7tkc"]
+
+[ext_resource type="Script" path="res://source/base_classes/combat_menu.gd" id="1_uvyjh"]
+
+[node name="CombatMenu" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_uvyjh")
+
+[node name="ActionList" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1664.0
+offset_top = 768.0
+offset_right = 1920.0
+offset_bottom = 1082.0
+
+[node name="Attack" type="Button" parent="ActionList"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Defend" type="Button" parent="ActionList"]
+layout_mode = 2
+text = "Defend"
+
+[node name="Abilities" type="MenuButton" parent="ActionList"]
+layout_mode = 2
+text = "Abilities"
+
+[node name="AllyList" type="ItemList" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1440.0
+offset_top = 720.0
+offset_right = 1664.0
+offset_bottom = 1040.0
+
+[node name="EnemyList" type="ItemList" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1488.0
+offset_top = 720.0
+offset_right = 1664.0
+offset_bottom = 960.0
+
+[connection signal="pressed" from="ActionList/Attack" to="." method="_on_attack_pressed"]
+[connection signal="item_clicked" from="AllyList" to="." method="_on_ally_list_item_clicked"]
+[connection signal="item_clicked" from="EnemyList" to="." method="_on_enemy_list_item_clicked"]

@@ -5,7 +5,7 @@ extends Resource
 #endregion
 
 #region Enums
-enum Target { ALLY, ENEMY }
+
 #endregion
 
 #region Constants
@@ -14,9 +14,9 @@ enum Target { ALLY, ENEMY }
 #region ExportVars
 @export var name: String = ""
 @export var mana_cost: int = 0
-@export var target: Target = Target.ENEMY
+@export var target: Global.Target = Global.Target.ENEMY
 @export var base_damage: int = 0
-@export var damage_attribute: Global.stats = Global.stats.STRENGTH
+@export var damage_attribute: Global.Stats = Global.Stats.STRENGTH
 #endregion
 
 #region PublicVars
