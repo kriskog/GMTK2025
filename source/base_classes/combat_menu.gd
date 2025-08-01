@@ -80,10 +80,12 @@ func _on_ally_list_item_clicked(index: int, _at_position: Vector2, _mouse_button
 		character.basic_attack(allies[index])
 	else:
 		character.use_ability_on_target(_chosen_ability, allies[index])
+	ally_list.visible = false
 
 func _on_enemy_list_item_clicked(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
 	if (_basic_attack):
 		character.basic_attack(enemies[index])
 	else:
 		character.use_ability_on_target(_chosen_ability, enemies[index])
+	enemy_list.visible = false
 #endregion
