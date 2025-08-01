@@ -20,27 +20,27 @@ func update_labels() -> void:
 	$EnemyCharacter/Label.text = (
 		("HP: %d/%d\n" + "MP: %d/%d\n" + "STR: %d\n" + "DEX: %d\n" + "MAG: %d\n" + "SPD: %d")
 		% [
-			boss.stats[Global.Stats.HEALTH],
-			boss.stats[Global.Stats.MAX_HEALTH],
-			boss.stats[Global.Stats.MANA],
-			boss.stats[Global.Stats.MAX_MANA],
-			boss.stats[Global.Stats.STRENGTH],
-			boss.stats[Global.Stats.DEXTERITY],
-			boss.stats[Global.Stats.MAGIC],
-			boss.stats[Global.Stats.SPEED]
+			boss.get_stat_total(Global.Stats.HEALTH),
+			boss.get_stat_total(Global.Stats.MAX_HEALTH),
+			boss.get_stat_total(Global.Stats.MANA),
+			boss.get_stat_total(Global.Stats.MAX_MANA),
+			boss.get_stat_total(Global.Stats.STRENGTH),
+			boss.get_stat_total(Global.Stats.DEXTERITY),
+			boss.get_stat_total(Global.Stats.MAGIC),
+			boss.get_stat_total(Global.Stats.SPEED)
 		]
 	)
 
 	$PlayableCharacter/Label.text = (
 		("HP: %d/%d\n" + "MP: %d/%d\n" + "STR: %d\n" + "DEX: %d\n" + "MAG: %d\n" + "SPD: %d")
 		% [
-			player.stats[Global.Stats.HEALTH],
-			player.stats[Global.Stats.MAX_HEALTH],
-			player.stats[Global.Stats.MANA],
-			player.stats[Global.Stats.MAX_MANA],
-			player.stats[Global.Stats.STRENGTH],
-			player.stats[Global.Stats.DEXTERITY],
-			player.stats[Global.Stats.MAGIC],
-			player.stats[Global.Stats.SPEED]
+			player.get_stat_total(Global.Stats.HEALTH),
+			player.get_stat_total(Global.Stats.MAX_HEALTH),
+			player.get_stat_total(Global.Stats.MANA),
+			player.get_stat_total(Global.Stats.MAX_MANA),
+			player.get_stat_total(Global.Stats.STRENGTH),
+			player.get_stat_total(Global.Stats.DEXTERITY),
+			player.get_stat_total(Global.Stats.MAGIC),
+			player.get_stat_total(Global.Stats.SPEED)
 		]
 	)

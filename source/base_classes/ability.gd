@@ -15,8 +15,10 @@ extends Resource
 @export var name: String = ""
 @export var mana_cost: int = 0
 @export var target: Global.Target = Global.Target.ENEMY
+@export var deals_damage: bool = true
 @export var base_damage: int = 0
 @export var damage_attribute: Global.Stats = Global.Stats.STRENGTH
+@export var effect_base: EffectBase = null
 #endregion
 
 #region PublicVars
