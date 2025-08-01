@@ -4,23 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://dkktxruckx1pq" path="res://source/base_classes/character_node.tscn" id="2_bdwci"]
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="3_6wv2w"]
 [ext_resource type="PackedScene" uid="uid://bh3gawj40w8gw" path="res://source/scenes/ui/menus/pause_menu.tscn" id="3_05073"]
+[ext_resource type="PackedScene" path="res://source/base_classes/combat_menu.tscn" id="4_h3sjs"]
 [ext_resource type="FontFile" uid="uid://byi1bnbahet5u" path="res://assets/fonts/press start 2p/press-start-2p-latin-400-normal.ttf" id="5_1t1lk"]
 [ext_resource type="Script" path="res://source/scenes/game/pause_button.gd" id="6_brkmx"]
 
-[sub_resource type="Resource" id="Resource_aeqic"]
+[sub_resource type="Resource" id="Resource_bophf"]
 script = ExtResource("3_6wv2w")
-name = "Melee"
-mana_cost = 0
+name = "Flame"
+mana_cost = 1
 target = 1
-base_damage = 2
-damage_attribute = 4
-
-[sub_resource type="Resource" id="Resource_ojelb"]
-script = ExtResource("3_6wv2w")
-name = "Fire"
-mana_cost = 2
-target = 1
-base_damage = 3
+deals_damage = true
+base_damage = 5
 damage_attribute = 7
 
 [sub_resource type="Resource" id="Resource_6oxbp"]
@@ -28,6 +22,7 @@ script = ExtResource("3_6wv2w")
 name = "Kill"
 mana_cost = 0
 target = 1
+deals_damage = true
 base_damage = 10
 damage_attribute = 4
 
@@ -51,9 +46,10 @@ color = Color(0.431373, 0.556863, 0.831373, 1)
 [node name="PlayableCharacter" parent="." instance=ExtResource("2_bdwci")]
 position = Vector2(1462, 574)
 scale = Vector2(0.5, 0.5)
-stats = {
-0: 30,
-1: 30,
+abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
+_stats = {
+0: 20,
+1: 20,
 2: 5,
 3: 5,
 4: 5,
@@ -61,7 +57,7 @@ stats = {
 6: 5,
 7: 8
 }
-abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_aeqic"), SubResource("Resource_ojelb")])
+character_name = "Me"
 
 [node name="Label" type="Label" parent="PlayableCharacter"]
 offset_left = -350.0
@@ -70,9 +66,15 @@ offset_right = -38.0
 offset_bottom = -553.0
 text = "player status"
 
+[node name="CombatMenu" parent="PlayableCharacter" node_paths=PackedStringArray("character", "allies", "enemies") instance=ExtResource("4_h3sjs")]
+character = NodePath("..")
+allies = [NodePath("..")]
+enemies = [NodePath("../../EnemyCharacter")]
+
 [node name="EnemyCharacter" parent="." instance=ExtResource("2_bdwci")]
 position = Vector2(496, 519)
-stats = {
+abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_6oxbp")])
+_stats = {
 0: 100,
 1: 100,
 2: 20,
@@ -82,21 +84,7 @@ stats = {
 6: 5,
 7: 5
 }
-abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_6oxbp")])
-
-[node name="attack_test" type="Button" parent="EnemyCharacter"]
-offset_left = 816.0
-offset_top = 237.0
-offset_right = 947.0
-offset_bottom = 371.0
-text = "attack"
-
-[node name="magic_test" type="Button" parent="EnemyCharacter"]
-offset_left = 970.0
-offset_top = 237.0
-offset_right = 1101.0
-offset_bottom = 371.0
-text = "magic"
+character_name = "Them"
 
 [node name="Label" type="Label" parent="EnemyCharacter"]
 offset_left = -174.0
@@ -134,6 +122,3 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_dafvg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4yk8c")
 text = "||"
 script = ExtResource("6_brkmx")
-
-[connection signal="pressed" from="EnemyCharacter/attack_test" to="." method="_on_attack_test_pressed"]
-[connection signal="pressed" from="EnemyCharacter/magic_test" to="." method="_on_magic_test_pressed"]

@@ -24,6 +24,7 @@ extends Node2D
 	Global.Stats.SPEED: 0,
 	Global.Stats.MAGIC: 0,
 }
+@export var character_name: String
 #endregion
 
 #region PublicVars
@@ -32,6 +33,12 @@ var is_turn: bool = false:
 		return is_turn
 	set(value):
 		is_turn = value
+
+var defending: bool = false:
+	get:
+		return defending
+	set(value):
+		defending = value
 #endregion
 
 #region PrivateVars
@@ -78,12 +85,14 @@ func get_ability_damage(ability: Ability) -> int:
 
 func take_damage(val: int) -> void:
 	# Take an amount of damage to health
-	update_state(Global.Stats.HEALTH, -val)
+	@warning_ignore("integer_division")
+	var damage_taken = val if !defending else val / 2
+	update_state(Global.Stats.HEALTH, -damage_taken)
 
 
 func spend_mana(val: int) -> bool:
 	# This succeeds if there's enough mana to pay the cost, and only spends the mana if so
-	if val <= get_effect_bonuses(Global.Stats.MANA):
+	if val <= get_stat_total(Global.Stats.MANA):
 		update_state(Global.Stats.MANA, -val)
 		return true
 	return false
@@ -122,6 +131,11 @@ func decay_effects(val: int = 1) -> void:
 			still_active.append(effect)
 
 	_effects = still_active
+
+
+func basic_attack(target: Character) -> void:
+	var damage = 500
+	target.take_damage(damage)
 #endregion
 
 #region PrivateMethods
