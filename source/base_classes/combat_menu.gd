@@ -86,6 +86,9 @@ func _on_ally_list_item_clicked(
 	else:
 		character.use_ability_on_target(_chosen_ability, allies[index])
 	ally_list.visible = false
+	enemy_list.visible = false
+	_chosen_ability = -1
+	_basic_attack = false
 
 
 func _on_enemy_list_item_clicked(
@@ -95,5 +98,15 @@ func _on_enemy_list_item_clicked(
 		character.basic_attack(enemies[index])
 	else:
 		character.use_ability_on_target(_chosen_ability, enemies[index])
+	ally_list.visible = false
 	enemy_list.visible = false
+	_chosen_ability = -1
+	_basic_attack = false
+	
+func _on_defend_pressed() -> void:
+	character.defending = true
+	ally_list.visible = false
+	enemy_list.visible = false
+	_chosen_ability = -1
+	_basic_attack = false
 #endregion
