@@ -73,7 +73,6 @@ func take_damage(val: int) -> void:
 	# Take an amount of damage to health
 	var damage_taken = val if !defending else val / 2
 	update_state(Global.Stats.HEALTH, -damage_taken)
-	update_state(Global.Stats.HEALTH, -val)
 
 
 func spend_mana(val: int) -> bool:
