@@ -117,6 +117,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PauseButton" type="Button" parent="UI"]
+layout_mode = 0
 offset_left = -27.0
 offset_top = -27.0
 offset_right = 237.0

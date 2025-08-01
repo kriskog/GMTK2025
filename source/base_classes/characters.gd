@@ -12,14 +12,14 @@ extends Node2D
 
 #region ExportVars
 @export var stats = {
-	Global.stats.HEALTH: 0,
-	Global.stats.MAX_HEALTH: 0,
-	Global.stats.MANA: 0,
-	Global.stats.MAX_MANA: 0,
-	Global.stats.STRENGTH: 0,
-	Global.stats.DEXTERITY: 0,
-	Global.stats.SPEED: 0,
-	Global.stats.MAGIC: 0,
+	Global.Stats.HEALTH: 0,
+	Global.Stats.MAX_HEALTH: 0,
+	Global.Stats.MANA: 0,
+	Global.Stats.MAX_MANA: 0,
+	Global.Stats.STRENGTH: 0,
+	Global.Stats.DEXTERITY: 0,
+	Global.Stats.SPEED: 0,
+	Global.Stats.MAGIC: 0,
 }
 @export var abilities: Array[Ability]
 #endregion
@@ -54,7 +54,7 @@ func _process(_delta: float) -> void:
 
 
 #region PublicMethods
-func update_state(stat: Global.stats, value: int) -> void:
+func update_state(stat: Global.Stats, value: int) -> void:
 	stats[stat] += value
 
 
@@ -64,13 +64,13 @@ func get_ability_damage(ability: Ability) -> int:
 
 func take_damage(val: int) -> void:
 	# Take an amount of damage to health
-	update_state(Global.stats.HEALTH, -val)
+	update_state(Global.Stats.HEALTH, -val)
 
 
 func spend_mana(val: int) -> bool:
 	# This succeeds if there's enough mana to pay the cost, and only spends the mana if so
-	if val <= stats[Global.stats.MANA]:
-		update_state(Global.stats.MANA, -val)
+	if val <= stats[Global.Stats.MANA]:
+		update_state(Global.Stats.MANA, -val)
 		return true
 	return false
 
