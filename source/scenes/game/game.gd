@@ -3,12 +3,13 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$PlayableCharacter.is_turn = true
 	update_labels()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	update_labels()
 
 
 ### THESE ARE TEMPORARY, REPLACE THESE EVENTUALLY
@@ -43,19 +44,3 @@ func update_labels() -> void:
 			player.stats[Global.Stats.SPEED]
 		]
 	)
-
-
-func attack_with_ability(num: int):
-	var player: CharacterNode = $PlayableCharacter
-	var boss: CharacterNode = $EnemyCharacter
-
-	player.use_ability_on_target(num, boss)
-	update_labels()
-
-
-func _on_attack_test_pressed() -> void:
-	attack_with_ability(0)
-
-
-func _on_magic_test_pressed() -> void:
-	attack_with_ability(1)

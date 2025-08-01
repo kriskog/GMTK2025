@@ -22,6 +22,7 @@ extends Node2D
 	Global.Stats.MAGIC: 0,
 }
 @export var abilities: Array[Ability]
+@export var character_name: String
 #endregion
 
 #region PublicVars
@@ -33,6 +34,12 @@ var is_turn: bool = false:
 		return is_turn
 	set(value):
 		is_turn = value
+
+var defending: bool = false:
+	get:
+		return defending
+	set(value):
+		defending = value
 #endregion
 
 #region OnReadyVars
@@ -64,7 +71,8 @@ func get_ability_damage(ability: Ability) -> int:
 
 func take_damage(val: int) -> void:
 	# Take an amount of damage to health
-	update_state(Global.Stats.HEALTH, -val)
+	var damage_taken = val if !defending else val / 2
+	update_state(Global.Stats.HEALTH, -damage_taken)
 
 
 func spend_mana(val: int) -> bool:
@@ -80,6 +88,11 @@ func use_ability_on_target(num: int, target: Character) -> void:
 	if spend_mana(attack_ability.mana_cost):
 		var attack_damage: int = get_ability_damage(attack_ability)
 		target.take_damage(attack_damage)
+
+
+func basic_attack(target: Character) -> void:
+	var damage = 500
+	target.take_damage(damage)
 #endregion
 
 #region PrivateMethods
