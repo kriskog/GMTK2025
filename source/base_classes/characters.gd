@@ -11,6 +11,9 @@ extends Node2D
 #endregion
 
 #region ExportVars
+@export var abilities: Array[Ability]
+## Stats should only be accessed via the get/set functionality, since those
+## calculate the effect bonuses properly.
 @export var _stats = {
 	Global.Stats.HEALTH: 0,
 	Global.Stats.MAX_HEALTH: 0,
@@ -21,21 +24,18 @@ extends Node2D
 	Global.Stats.SPEED: 0,
 	Global.Stats.MAGIC: 0,
 }
-"""Stats should only be accessed via the get/set functionality, since those
-calculate the effect bonuses properly."""
-@export var abilities: Array[Ability]
 #endregion
 
 #region PublicVars
-var _effects: Array[Effect]
-#endregion
-
-#region PrivateVars
 var is_turn: bool = false:
 	get:
 		return is_turn
 	set(value):
 		is_turn = value
+#endregion
+
+#region PrivateVars
+var _effects: Array[Effect]
 #endregion
 
 #region OnReadyVars
