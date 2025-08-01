@@ -11,7 +11,7 @@ extends Node2D
 #endregion
 
 #region ExportVars
-@export var stats = {
+@export var _stats = {
 	Global.Stats.HEALTH: 0,
 	Global.Stats.MAX_HEALTH: 0,
 	Global.Stats.MANA: 0,
@@ -21,10 +21,13 @@ extends Node2D
 	Global.Stats.SPEED: 0,
 	Global.Stats.MAGIC: 0,
 }
+"""Stats should only be accessed via the get/set functionality, since those
+calculate the effect bonuses properly."""
 @export var abilities: Array[Ability]
 #endregion
 
 #region PublicVars
+var _effects: Array[Effect]
 #endregion
 
 #region PrivateVars
@@ -55,11 +58,23 @@ func _process(_delta: float) -> void:
 
 #region PublicMethods
 func update_state(stat: Global.Stats, value: int) -> void:
-	stats[stat] += value
+	_stats[stat] += value
 
+
+func get_stat_total(stat: Global.Stats) -> int:
+	return _stats[stat] + get_effect_bonuses(stat)
+
+
+func get_effect_bonuses(stat: Global.Stats) -> int:
+	var total: int = 0
+	for effect in _effects:
+		total += effect.get_stat_bonus(stat)
+	return total
 
 func get_ability_damage(ability: Ability) -> int:
-	return ability.get_total_damage(stats[ability.damage_attribute])
+	return ability.get_total_damage(
+		get_stat_total(ability.damage_attribute)
+	)
 
 
 func take_damage(val: int) -> void:
@@ -69,17 +84,49 @@ func take_damage(val: int) -> void:
 
 func spend_mana(val: int) -> bool:
 	# This succeeds if there's enough mana to pay the cost, and only spends the mana if so
-	if val <= stats[Global.Stats.MANA]:
+	# Mana probably shouldn't be getting temp buffs, so this checks against the raw stat.
+	if val <= get_effect_bonuses(Global.Stats.MANA):
 		update_state(Global.Stats.MANA, -val)
 		return true
 	return false
 
 
 func use_ability_on_target(num: int, target: Character) -> void:
-	var attack_ability: Ability = abilities[num]
-	if spend_mana(attack_ability.mana_cost):
-		var attack_damage: int = get_ability_damage(attack_ability)
-		target.take_damage(attack_damage)
+	var used_ability: Ability = abilities[num]
+	if spend_mana(used_ability.mana_cost):
+
+		if used_ability.deals_damage:
+			var attack_damage: int = get_ability_damage(used_ability)
+			target.take_damage(attack_damage)
+
+		if used_ability.effect_base != null:
+			var effect: Effect = Effect.new(used_ability.effect_base)
+
+			if effect.damage_over_time and effect.damage_attribute != null:
+				effect.add_damage(
+					get_stat_total(effect.damage_attribute)
+				)
+
+			target.add_effect(effect)
+
+
+func add_effect(effect: Effect) -> void:
+	_effects.append(effect)
+
+
+func decay_effects(val: int = 1) -> void:
+	# Reduce all effects' duration by 1 turn, keep all effects that still have duration
+	var still_active: Array[Effect] = []
+	for effect in _effects:
+		effect.reduce_duration(val)
+
+		if effect.damage_over_time:
+			take_damage(effect.deal_damage())
+
+		if not effect.decayed():
+			still_active.append(effect)
+
+	_effects = still_active
 #endregion
 
 #region PrivateMethods
