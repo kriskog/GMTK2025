@@ -8,9 +8,11 @@ extends Node2D
 #endregion
 
 #region Constants
+const BASIC_ATTACK_INDEX = -1
 #endregion
 
 #region ExportVars
+@export var basic_attack: Ability = preload("res://source/abilities/basic_attack.tres")
 @export var abilities: Array[Ability]
 ## Stats should only be accessed via the get/set functionality, since those
 ## calculate the effect bonuses properly.
@@ -98,7 +100,13 @@ func spend_mana(val: int) -> bool:
 
 
 func use_ability_on_target(num: int, target: Character) -> void:
-	var used_ability: Ability = abilities[num]
+	var used_ability: Ability
+	# override for basic "attack" action
+	if num == -1:
+		used_ability = basic_attack
+	else:
+		used_ability = abilities[num]
+
 	if spend_mana(used_ability.mana_cost):
 		if used_ability.deals_damage:
 			var attack_damage: int = get_ability_damage(used_ability)
@@ -131,10 +139,6 @@ func decay_effects(val: int = 1) -> void:
 
 	_effects = still_active
 
-
-func basic_attack(target: Character) -> void:
-	var damage = 500
-	target.take_damage(damage)
 #endregion
 
 #region PrivateMethods
