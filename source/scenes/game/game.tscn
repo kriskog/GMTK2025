@@ -44,8 +44,8 @@ offset_bottom = 1080.0
 color = Color(0.431373, 0.556863, 0.831373, 1)
 
 [node name="PlayableCharacter" parent="." instance=ExtResource("2_bdwci")]
-position = Vector2(1462, 574)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1462, 800)
+scale = Vector2(0.25, 0.25)
 abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
 _stats = {
 0: 20,
@@ -122,3 +122,92 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_dafvg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4yk8c")
 text = "||"
 script = ExtResource("6_brkmx")
+
+[node name="PlayableCharacter2" parent="." instance=ExtResource("2_bdwci")]
+position = Vector2(1462, 600)
+scale = Vector2(0.25, 0.25)
+abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
+_stats = {
+0: 20,
+1: 20,
+2: 5,
+3: 5,
+4: 5,
+5: 5,
+6: 5,
+7: 8
+}
+character_name = "Me"
+
+[node name="Label" type="Label" parent="PlayableCharacter2"]
+offset_left = -350.0
+offset_top = -654.0
+offset_right = -38.0
+offset_bottom = -553.0
+text = "player status"
+
+[node name="CombatMenu" parent="PlayableCharacter2" node_paths=PackedStringArray("character") instance=ExtResource("4_h3sjs")]
+offset_top = -200.0
+offset_bottom = -200.0
+character = NodePath("..")
+
+[node name="PlayableCharacter3" parent="." instance=ExtResource("2_bdwci")]
+position = Vector2(1460, 400)
+scale = Vector2(0.25, 0.25)
+abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
+_stats = {
+0: 20,
+1: 20,
+2: 5,
+3: 5,
+4: 5,
+5: 5,
+6: 5,
+7: 8
+}
+character_name = "Me"
+
+[node name="Label" type="Label" parent="PlayableCharacter3"]
+offset_left = -350.0
+offset_top = -654.0
+offset_right = -38.0
+offset_bottom = -553.0
+text = "player status"
+
+[node name="CombatMenu" parent="PlayableCharacter3" node_paths=PackedStringArray("character") instance=ExtResource("4_h3sjs")]
+offset_top = -400.0
+offset_bottom = -400.0
+character = NodePath("..")
+
+[node name="PlayableCharacter4" parent="." instance=ExtResource("2_bdwci")]
+position = Vector2(1459, 200)
+scale = Vector2(0.25, 0.25)
+abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
+_stats = {
+0: 20,
+1: 20,
+2: 5,
+3: 5,
+4: 5,
+5: 5,
+6: 5,
+7: 8
+}
+character_name = "Me"
+
+[node name="Label" type="Label" parent="PlayableCharacter4"]
+offset_left = -350.0
+offset_top = -654.0
+offset_right = -38.0
+offset_bottom = -553.0
+text = "player status"
+
+[node name="CombatMenu" parent="PlayableCharacter4" node_paths=PackedStringArray("character") instance=ExtResource("4_h3sjs")]
+offset_top = -600.0
+offset_bottom = -600.0
+character = NodePath("..")
+
+[connection signal="turn_end" from="PlayableCharacter/CombatMenu" to="." method="_on_combat_menu_turn_end"]
+[connection signal="turn_end" from="PlayableCharacter2/CombatMenu" to="." method="_on_combat_menu_turn_end"]
+[connection signal="turn_end" from="PlayableCharacter3/CombatMenu" to="." method="_on_combat_menu_turn_end"]
+[connection signal="turn_end" from="PlayableCharacter4/CombatMenu" to="." method="_on_combat_menu_turn_end"]
