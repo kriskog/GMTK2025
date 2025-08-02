@@ -38,7 +38,11 @@ func _on_combat_menu_turn_end(character) -> void:
 			charlist[turncount].is_turn = true
 		else:
 			while charlist[turncount].get_stat_total(Global.Stats.HEALTH) <= 0:
-				turncount += 1
+				if turncount == 3:
+					turncount = 0
+				else:
+					turncount += 1
+			charlist[turncount].is_turn = true
 
 
 ### THESE ARE TEMPORARY, REPLACE THESE EVENTUALLY
