@@ -29,11 +29,8 @@ func _on_combat_menu_turn_end(character) -> void:
 		character.is_hasted = false  #not implemented
 	else:
 		character.is_turn = false
-		if character == charlist[3]:
-			#boss.turn() #not implemented
-			turncount = 0
-		else:
-			turncount += 1
+		turncount += 1
+		turncount %= charlist.size()
 		if charlist[turncount].get_stat_total(Global.Stats.HEALTH) > 0:
 			charlist[turncount].is_turn = true
 		else:
@@ -43,7 +40,7 @@ func _on_combat_menu_turn_end(character) -> void:
 			#turncount = 0
 			#else:
 			#turncount += 1
-			charlist[turncount].is_turn = true
+			#charlist[turncount].is_turn = true
 
 
 ### THESE ARE TEMPORARY, REPLACE THESE EVENTUALLY
