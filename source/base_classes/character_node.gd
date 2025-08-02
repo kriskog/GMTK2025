@@ -23,6 +23,7 @@ var _character_sprite: Sprite2D
 #endregion
 
 #region OnReadyVars
+@onready var damage_numbers_origin = $"/root/DamageNumber"
 #endregion
 
 
@@ -46,6 +47,7 @@ func _process(_delta: float) -> void:
 #region PublicMethods
 func take_damage(val: int) -> void:
 	super.take_damage(val)
+	DamageNumber.display_number(val, _character_sprite.global_position)
 	_blood_particles.restart()
 	_blood_particles.emitting = true
 #endregion
