@@ -1,6 +1,7 @@
 extends Control
 
 #region Signals
+signal turn_end
 #endregion
 
 #region Enums
@@ -95,6 +96,7 @@ func _on_ally_list_item_clicked(
 		character.use_ability_on_target(character.BASIC_ATTACK_INDEX, allies[index])
 	else:
 		character.use_ability_on_target(_chosen_ability, allies[index])
+	turn_end.emit(character)
 	_reset_menu()
 
 
@@ -105,10 +107,12 @@ func _on_enemy_list_item_clicked(
 		character.use_ability_on_target(character.BASIC_ATTACK_INDEX, enemies[index])
 	else:
 		character.use_ability_on_target(_chosen_ability, enemies[index])
+	turn_end.emit(character)
 	_reset_menu()
 
 
 func _on_defend_pressed() -> void:
 	_reset_menu()
+	turn_end.emit(character)
 	character.defending = true
 #endregion

@@ -36,6 +36,12 @@ var is_turn: bool = false:
 	set(value):
 		is_turn = value
 
+var is_hasted: bool = false:
+	get:
+		return is_hasted
+	set(value):
+		is_hasted = value
+
 var defending: bool = false:
 	get:
 		return defending
