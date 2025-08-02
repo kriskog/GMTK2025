@@ -29,7 +29,7 @@ var _current_turn: int = 0
 #region BuiltinMethods
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if (get_stat_total(Global.Stats.HEALTH) <= 0):
+	if get_stat_total(Global.Stats.HEALTH) <= 0:
 		dead.emit()
 
 
@@ -51,7 +51,10 @@ func handle_turn() -> void:
 		5:
 			_final_turn()
 	turn_end.emit(self)
+
+
 #endregion
+
 
 #region PrivateMethods
 func _sort_targets(a: Character, b: Character):
@@ -59,26 +62,31 @@ func _sort_targets(a: Character, b: Character):
 		return true
 	return false
 
+
 func _first_turn() -> void:
 	_targets.sort_custom(_sort_targets)
 	var target = _targets[0]
 	use_ability_on_target(0, target)
 
+
 func _second_turn() -> void:
 	for target in _targets:
 		use_ability_on_target(1, target)
+
 
 func _third_turn() -> void:
 	_targets.sort_custom(_sort_targets)
 	var target = _targets[0]
 	use_ability_on_target(2, target)
 
+
 func _fourth_turn() -> void:
 	for target in _targets:
 		use_ability_on_target(3, target)
 
+
 func _final_turn() -> void:
 	for target in _targets:
 		use_ability_on_target(4, target)
-	
+
 #endregion

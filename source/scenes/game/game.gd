@@ -17,6 +17,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+
 func fill_charlist() -> void:
 	charlist.append($PlayableCharacter)
 	charlist.append($PlayableCharacter2)
