@@ -146,10 +146,11 @@ offset_right = -38.0
 offset_bottom = -553.0
 text = "player status"
 
-[node name="CombatMenu" parent="PlayableCharacter2" node_paths=PackedStringArray("character") instance=ExtResource("4_h3sjs")]
+[node name="CombatMenu" parent="PlayableCharacter2" node_paths=PackedStringArray("character", "enemies") instance=ExtResource("4_h3sjs")]
 offset_top = -200.0
 offset_bottom = -200.0
 character = NodePath("..")
+enemies = [NodePath("../../EnemyCharacter")]
 
 [node name="PlayableCharacter3" parent="." instance=ExtResource("2_bdwci")]
 position = Vector2(1460, 400)
@@ -174,10 +175,11 @@ offset_right = -38.0
 offset_bottom = -553.0
 text = "player status"
 
-[node name="CombatMenu" parent="PlayableCharacter3" node_paths=PackedStringArray("character") instance=ExtResource("4_h3sjs")]
+[node name="CombatMenu" parent="PlayableCharacter3" node_paths=PackedStringArray("character", "enemies") instance=ExtResource("4_h3sjs")]
 offset_top = -400.0
 offset_bottom = -400.0
 character = NodePath("..")
+enemies = [NodePath("../../EnemyCharacter")]
 
 [node name="PlayableCharacter4" parent="." instance=ExtResource("2_bdwci")]
 position = Vector2(1459, 200)
@@ -202,10 +204,11 @@ offset_right = -38.0
 offset_bottom = -553.0
 text = "player status"
 
-[node name="CombatMenu" parent="PlayableCharacter4" node_paths=PackedStringArray("character") instance=ExtResource("4_h3sjs")]
+[node name="CombatMenu" parent="PlayableCharacter4" node_paths=PackedStringArray("character", "enemies") instance=ExtResource("4_h3sjs")]
 offset_top = -600.0
 offset_bottom = -600.0
 character = NodePath("..")
+enemies = [NodePath("../../EnemyCharacter")]
 
 [connection signal="turn_end" from="PlayableCharacter/CombatMenu" to="." method="_on_combat_menu_turn_end"]
 [connection signal="turn_end" from="PlayableCharacter2/CombatMenu" to="." method="_on_combat_menu_turn_end"]
