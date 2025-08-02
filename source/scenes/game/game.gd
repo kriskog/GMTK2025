@@ -9,7 +9,7 @@ func _ready() -> void:
 	$PlayableCharacter.is_turn = true
 	update_labels()
 	turncount = 0
-	fill_Charlist()
+	fill_charlist()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
