@@ -9,6 +9,11 @@
 [ext_resource type="FontFile" uid="uid://byi1bnbahet5u" path="res://assets/fonts/press start 2p/press-start-2p-latin-400-normal.ttf" id="5_1t1lk"]
 [ext_resource type="Script" path="res://source/scenes/game/pause_button.gd" id="6_brkmx"]
 [ext_resource type="Texture2D" uid="uid://deayr4nxl426u" path="res://icon.svg" id="6_y3n1w"]
+[ext_resource type="Resource" uid="uid://bo5at62y6wj4c" path="res://source/abilities/first_attack.tres" id="10_5yrhe"]
+[ext_resource type="Resource" uid="uid://cjnlpfuhdh6nl" path="res://source/abilities/second_attack.tres" id="11_uxhet"]
+[ext_resource type="Resource" uid="uid://dmxhu7w7q1dqq" path="res://source/abilities/third_attack.tres" id="12_k6exb"]
+[ext_resource type="Resource" uid="uid://w3jn2np8cx2p" path="res://source/abilities/fourth_attack.tres" id="13_mnhss"]
+[ext_resource type="Resource" uid="uid://bhx3sgg1ie6dk" path="res://source/abilities/final_attack.tres" id="14_iq1l6"]
 
 [sub_resource type="Resource" id="Resource_bophf"]
 script = ExtResource("3_6wv2w")
@@ -18,51 +23,6 @@ target = 1
 deals_damage = true
 base_damage = 5
 damage_attribute = 7
-
-[sub_resource type="Resource" id="Resource_oj1x0"]
-script = ExtResource("3_6wv2w")
-name = "First Attack"
-mana_cost = 0
-target = 1
-deals_damage = true
-base_damage = 500
-damage_attribute = 4
-
-[sub_resource type="Resource" id="Resource_0wiwp"]
-script = ExtResource("3_6wv2w")
-name = "Second Ability"
-mana_cost = 0
-target = 1
-deals_damage = true
-base_damage = 200
-damage_attribute = 4
-
-[sub_resource type="Resource" id="Resource_tre2r"]
-script = ExtResource("3_6wv2w")
-name = "Third Ability"
-mana_cost = 0
-target = 1
-deals_damage = true
-base_damage = 750
-damage_attribute = 4
-
-[sub_resource type="Resource" id="Resource_e50ir"]
-script = ExtResource("3_6wv2w")
-name = "Fourth Ability"
-mana_cost = 0
-target = 1
-deals_damage = true
-base_damage = 500
-damage_attribute = 4
-
-[sub_resource type="Resource" id="Resource_ni0vk"]
-script = ExtResource("3_6wv2w")
-name = "Final Ability"
-mana_cost = 0
-target = 1
-deals_damage = true
-base_damage = 9499
-damage_attribute = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4448"]
 
@@ -84,6 +44,7 @@ color = Color(0.431373, 0.556863, 0.831373, 1)
 [node name="PlayableCharacter" parent="." instance=ExtResource("2_bdwci")]
 position = Vector2(1462, 800)
 scale = Vector2(0.25, 0.25)
+sprite = ExtResource("6_y3n1w")
 abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
 _stats = {
 0: 20,
@@ -106,61 +67,8 @@ text = "player status"
 
 [node name="CombatMenu" parent="PlayableCharacter" node_paths=PackedStringArray("character", "allies", "enemies") instance=ExtResource("4_h3sjs")]
 character = NodePath("..")
-allies = [NodePath("..")]
+allies = [NodePath(".."), NodePath("../../PlayableCharacter2"), NodePath("../../PlayableCharacter3"), NodePath("../../PlayableCharacter4")]
 enemies = [NodePath("../../EnemyCharacter")]
-
-[node name="PlayableCharacter2" parent="." instance=ExtResource("2_bdwci")]
-position = Vector2(1462, 574)
-scale = Vector2(0.5, 0.5)
-sprite = ExtResource("6_y3n1w")
-abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
-_stats = {
-0: 5,
-1: 22,
-2: 5,
-3: 5,
-4: 5,
-5: 5,
-6: 5,
-7: 8
-}
-character_name = "Me2"
-
-[node name="Label" type="Label" parent="PlayableCharacter2"]
-offset_left = -350.0
-offset_top = -654.0
-offset_right = -38.0
-offset_bottom = -553.0
-text = "player status"
-
-[node name="CombatMenu" parent="PlayableCharacter2" node_paths=PackedStringArray("character", "allies", "enemies") instance=ExtResource("4_h3sjs")]
-character = NodePath("..")
-allies = [NodePath("..")]
-enemies = [NodePath("../../EnemyCharacter")]
-
-[node name="EnemyCharacter" parent="." node_paths=PackedStringArray("_targets") instance=ExtResource("5_0ws3h")]
-position = Vector2(333, 477)
-_targets = [NodePath("../PlayableCharacter"), NodePath("../PlayableCharacter2")]
-sprite = ExtResource("6_y3n1w")
-abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_oj1x0"), SubResource("Resource_0wiwp"), SubResource("Resource_tre2r"), SubResource("Resource_e50ir"), SubResource("Resource_ni0vk")])
-_stats = {
-0: 5750,
-1: 4600,
-2: 0,
-3: 0,
-4: 500,
-5: 500,
-6: 500,
-7: 500
-}
-character_name = "Big Dawg"
-
-[node name="Label" type="Label" parent="EnemyCharacter"]
-offset_left = 322.0
-offset_top = 55.0
-offset_right = 656.0
-offset_bottom = 208.0
-text = "boss stats"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -195,6 +103,7 @@ script = ExtResource("6_brkmx")
 [node name="PlayableCharacter2" parent="." instance=ExtResource("2_bdwci")]
 position = Vector2(1462, 600)
 scale = Vector2(0.25, 0.25)
+sprite = ExtResource("6_y3n1w")
 abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
 _stats = {
 0: 20,
@@ -215,15 +124,17 @@ offset_right = -38.0
 offset_bottom = -553.0
 text = "player status"
 
-[node name="CombatMenu" parent="PlayableCharacter2" node_paths=PackedStringArray("character", "enemies") instance=ExtResource("4_h3sjs")]
+[node name="CombatMenu" parent="PlayableCharacter2" node_paths=PackedStringArray("character", "allies", "enemies") instance=ExtResource("4_h3sjs")]
 offset_top = -200.0
 offset_bottom = -200.0
 character = NodePath("..")
+allies = [NodePath("../../PlayableCharacter"), NodePath(".."), NodePath("../../PlayableCharacter3"), NodePath("../../PlayableCharacter4")]
 enemies = [NodePath("../../EnemyCharacter")]
 
 [node name="PlayableCharacter3" parent="." instance=ExtResource("2_bdwci")]
 position = Vector2(1460, 400)
 scale = Vector2(0.25, 0.25)
+sprite = ExtResource("6_y3n1w")
 abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
 _stats = {
 0: 20,
@@ -244,15 +155,17 @@ offset_right = -38.0
 offset_bottom = -553.0
 text = "player status"
 
-[node name="CombatMenu" parent="PlayableCharacter3" node_paths=PackedStringArray("character", "enemies") instance=ExtResource("4_h3sjs")]
+[node name="CombatMenu" parent="PlayableCharacter3" node_paths=PackedStringArray("character", "allies", "enemies") instance=ExtResource("4_h3sjs")]
 offset_top = -400.0
 offset_bottom = -400.0
 character = NodePath("..")
+allies = [NodePath("../../PlayableCharacter"), NodePath("../../PlayableCharacter2"), NodePath(".."), NodePath("../../PlayableCharacter4")]
 enemies = [NodePath("../../EnemyCharacter")]
 
 [node name="PlayableCharacter4" parent="." instance=ExtResource("2_bdwci")]
 position = Vector2(1459, 200)
 scale = Vector2(0.25, 0.25)
+sprite = ExtResource("6_y3n1w")
 abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
 _stats = {
 0: 20,
@@ -273,13 +186,40 @@ offset_right = -38.0
 offset_bottom = -553.0
 text = "player status"
 
-[node name="CombatMenu" parent="PlayableCharacter4" node_paths=PackedStringArray("character", "enemies") instance=ExtResource("4_h3sjs")]
+[node name="CombatMenu" parent="PlayableCharacter4" node_paths=PackedStringArray("character", "allies", "enemies") instance=ExtResource("4_h3sjs")]
 offset_top = -600.0
 offset_bottom = -600.0
 character = NodePath("..")
+allies = [NodePath("../../PlayableCharacter"), NodePath("../../PlayableCharacter2"), NodePath("../../PlayableCharacter3"), NodePath("..")]
 enemies = [NodePath("../../EnemyCharacter")]
+
+[node name="EnemyCharacter" parent="." node_paths=PackedStringArray("_targets") instance=ExtResource("5_0ws3h")]
+position = Vector2(282, 533)
+_targets = [NodePath("../PlayableCharacter"), NodePath("../PlayableCharacter2"), NodePath("../PlayableCharacter3"), NodePath("../PlayableCharacter4")]
+sprite = ExtResource("6_y3n1w")
+abilities = Array[ExtResource("3_6wv2w")]([ExtResource("10_5yrhe"), ExtResource("11_uxhet"), ExtResource("12_k6exb"), ExtResource("13_mnhss"), ExtResource("14_iq1l6")])
+_stats = {
+0: 5750,
+1: 4600,
+2: 0,
+3: 0,
+4: 500,
+5: 500,
+6: 500,
+7: 500
+}
+character_name = "Big Dawg"
+
+[node name="Label" type="Label" parent="EnemyCharacter"]
+offset_left = 322.0
+offset_top = 55.0
+offset_right = 656.0
+offset_bottom = 208.0
+text = "boss stats"
 
 [connection signal="turn_end" from="PlayableCharacter/CombatMenu" to="." method="_on_combat_menu_turn_end"]
 [connection signal="turn_end" from="PlayableCharacter2/CombatMenu" to="." method="_on_combat_menu_turn_end"]
 [connection signal="turn_end" from="PlayableCharacter3/CombatMenu" to="." method="_on_combat_menu_turn_end"]
 [connection signal="turn_end" from="PlayableCharacter4/CombatMenu" to="." method="_on_combat_menu_turn_end"]
+[connection signal="dead" from="EnemyCharacter" to="." method="_on_enemy_character_dead"]
+[connection signal="turn_end" from="EnemyCharacter" to="." method="_on_combat_menu_turn_end"]

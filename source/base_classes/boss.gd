@@ -1,6 +1,8 @@
 extends CharacterNode
 
 #region Signals
+signal turn_end
+signal dead
 #endregion
 
 #region Enums
@@ -27,17 +29,15 @@ var _current_turn: int = 0
 #region BuiltinMethods
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if (get_stat_total(Global.Stats.HEALTH) <= 0):
+		dead.emit()
 
 
 #endregion
 
 
 #region PublicMethods
-#endregion
-
-#region PrivateMethods
-func _handle_turn() -> void:
+func handle_turn() -> void:
 	_current_turn += 1
 	match _current_turn:
 		1:
@@ -50,8 +50,10 @@ func _handle_turn() -> void:
 			_fourth_turn()
 		5:
 			_final_turn()
-	if _current_turn < 5: _handle_turn()
+	turn_end.emit(self)
+#endregion
 
+#region PrivateMethods
 func _sort_targets(a: Character, b: Character):
 	if a.get_stat_total(Global.Stats.HEALTH) < b.get_stat_total(Global.Stats.HEALTH):
 		return true
@@ -80,7 +82,3 @@ func _final_turn() -> void:
 		use_ability_on_target(4, target)
 	
 #endregion
-
-
-func _on_timer_timeout() -> void:
-	_handle_turn()
