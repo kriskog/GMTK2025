@@ -17,10 +17,10 @@ const BASIC_ATTACK_INDEX = -1
 ## Stats should only be accessed via the get/set functionality, since those
 ## calculate the effect bonuses properly.
 @export var _stats = {
-	Global.Stats.HEALTH: 0,
 	Global.Stats.MAX_HEALTH: 0,
-	Global.Stats.MANA: 0,
+	Global.Stats.HEALTH: 0,
 	Global.Stats.MAX_MANA: 0,
+	Global.Stats.MANA: 0,
 	Global.Stats.STRENGTH: 0,
 	Global.Stats.DEXTERITY: 0,
 	Global.Stats.SPEED: 0,

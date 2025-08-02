@@ -19,10 +19,10 @@ extends Character
 
 #region PrivateVars
 var _blood_particles: CPUParticles2D
-var _character_sprite: Sprite2D
 #endregion
 
 #region OnReadyVars
+@onready var _character_sprite: Sprite2D = $character_sprite
 #endregion
 
 
@@ -30,7 +30,6 @@ var _character_sprite: Sprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_blood_particles = $blood_particles
-	_character_sprite = $character_sprite
 	if sprite != null:
 		_character_sprite.texture = sprite
 
