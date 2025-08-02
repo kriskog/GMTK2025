@@ -93,7 +93,8 @@ func get_ability_damage(ability: Ability) -> int:
 
 func take_damage(val: int) -> void:
 	# Take an amount of damage to health
-	@warning_ignore("integer_division") var damage_taken = val if !defending else val / 2
+	@warning_ignore("integer_division")
+	var damage_taken = val if !defending else val / 2
 	update_state(Global.Stats.HEALTH, -damage_taken)
 
 
