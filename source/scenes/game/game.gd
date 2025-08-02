@@ -1,15 +1,46 @@
 extends Node
 
+var turncount
+var charlist = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$PlayableCharacter.is_turn = true
 	update_labels()
+	turncount = 0
+	fill_charlist()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	update_labels()
+
+
+func fill_charlist() -> void:
+	charlist.append($PlayableCharacter)
+	charlist.append($PlayableCharacter2)
+	charlist.append($PlayableCharacter3)
+	charlist.append($PlayableCharacter4)
+
+
+func _on_combat_menu_turn_end(character) -> void:
+	if character.is_hasted:
+		character.is_hasted = false  #not implemented
+	else:
+		character.is_turn = false
+		turncount += 1
+		turncount %= charlist.size()
+		if charlist[turncount].get_stat_total(Global.Stats.HEALTH) > 0:
+			charlist[turncount].is_turn = true
+		else:
+			_on_combat_menu_turn_end(charlist[turncount])
+			#while charlist[turncount].get_stat_total(Global.Stats.HEALTH) <= 0:
+			#if turncount == 3:
+			#turncount = 0
+			#else:
+			#turncount += 1
+			#charlist[turncount].is_turn = true
 
 
 ### THESE ARE TEMPORARY, REPLACE THESE EVENTUALLY
