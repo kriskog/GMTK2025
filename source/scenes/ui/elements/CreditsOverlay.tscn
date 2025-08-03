@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcnf2nu2hbogy"]
+[gd_scene load_steps=3 format=3 uid="uid://dcnf2nu2hbogy"]
 
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_jlvhb"]
 [ext_resource type="Script" path="res://source/scenes/ui/elements/credits_overlay.gd" id="2_5ph7v"]
-[ext_resource type="AudioStream" uid="uid://ovmpjbrynvci" path="res://assets/sounds/click.wav" id="3_84fby"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i3x1n"]
-streams_count = 1
-stream_0/stream = ExtResource("3_84fby")
 
 [node name="CreditsOverlay" type="Control"]
 layout_mode = 3
@@ -77,7 +72,3 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "Close"
 flat = true
-
-[node name="Click" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_i3x1n")
-pitch_scale = 1.22

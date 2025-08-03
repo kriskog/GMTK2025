@@ -1,6 +1,8 @@
 extends Control
 
+#region Signals
 signal unpaused
+#endregion
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,12 +27,14 @@ func _process(_delta: float) -> void:
 
 
 func _on_continue_pressed() -> void:
+	SignalBus.button_clicked.emit()
 	hide()
 
 
 func _on_main_menu_pressed() -> void:
+	SignalBus.button_clicked.emit()
 	hide()
-	get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
+	SignalBus.main_menu.emit()
 
 
 func _on_visibility_changed() -> void:

@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://shdlq4dqjb7x"]
+
+[ext_resource type="Script" path="res://source/scenes/audio/audio_manager.gd" id="1_4bvod"]
+[ext_resource type="AudioStream" uid="uid://ce85or4fy5ury" path="res://assets/audio/Kenney/select_005.ogg" id="2_10oci"]
+[ext_resource type="AudioStream" uid="uid://blck5okxxmtv0" path="res://assets/audio/Damare/Title_Screen.ogg" id="3_bxen5"]
+[ext_resource type="AudioStream" uid="uid://brme3svnao8k8" path="res://assets/audio/Damare/Boss_Fight.ogg" id="4_s0tpt"]
+[ext_resource type="AudioStream" uid="uid://g4dxww3j18m8" path="res://assets/audio/Damare/Credits.ogg" id="4_satw3"]
+[ext_resource type="AudioStream" uid="uid://i4cnjddwfo2m" path="res://assets/audio/Damare/Victory_Fanfare.ogg" id="5_hg1jj"]
+[ext_resource type="AudioStream" uid="uid://ccar4sg3igmrx" path="res://assets/audio/Damare/Game_Over.ogg" id="6_fja8j"]
+
+[node name="Audio_manager" type="Node"]
+script = ExtResource("1_4bvod")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_10oci")
+
+[node name="title_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bxen5")
+
+[node name="credits_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_satw3")
+
+[node name="boss_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_s0tpt")
+
+[node name="victory_fanfare" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hg1jj")
+
+[node name="loss_dirge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fja8j")

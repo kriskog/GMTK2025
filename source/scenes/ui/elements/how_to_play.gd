@@ -1,7 +1,5 @@
 extends Control
 
-@onready var click: AudioStreamPlayer = $Click
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,10 +15,9 @@ func _process(_delta: float) -> void:
 
 #region signal funcs
 
-
 func _on_close_pressed() -> void:
 	# Signals main to kill current scenes and bring up main menu.
-	click.play()
+	SignalBus.button_clicked.emit()
 	hide()
 
 

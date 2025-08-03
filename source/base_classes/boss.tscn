@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwtkov7ka5eov"]
 
 [ext_resource type="Script" path="res://source/base_classes/boss.gd" id="1_fq40b"]
-[ext_resource type="Texture2D" uid="uid://deayr4nxl426u" path="res://icon.svg" id="2_vnajd"]
+[ext_resource type="Texture2D" uid="uid://b6mka4mtuf4oo" path="res://assets/sprites/CC0cat.png" id="2_uagsh"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_fq40b")
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_vnajd")
+scale = Vector2(4, 4)
+texture = ExtResource("2_uagsh")
 
 [node name="blood_particles" type="CPUParticles2D" parent="sprite"]
 emitting = false

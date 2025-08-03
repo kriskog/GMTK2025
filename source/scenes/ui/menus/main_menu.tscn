@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4dnm8piv8tvd"]
+[gd_scene load_steps=7 format=3 uid="uid://b4dnm8piv8tvd"]
 
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_6eapn"]
 [ext_resource type="Script" path="res://source/scenes/ui/menus/main_menu.gd" id="1_76osk"]
 [ext_resource type="PackedScene" uid="uid://dcnf2nu2hbogy" path="res://source/scenes/ui/elements/CreditsOverlay.tscn" id="4_7bjh4"]
-[ext_resource type="AudioStream" uid="uid://ovmpjbrynvci" path="res://assets/sounds/click.wav" id="4_mgesy"]
 [ext_resource type="PackedScene" uid="uid://bj1gpalilav3a" path="res://source/scenes/ui/elements/how_to_play.tscn" id="5_2o6w5"]
 
 [sub_resource type="Gradient" id="Gradient_nxiiu"]
@@ -12,10 +11,6 @@ colors = PackedColorArray(0, 0.341176, 0.337255, 1, 0, 0.541176, 0.533333, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dxicj"]
 gradient = SubResource("Gradient_nxiiu")
 fill_from = Vector2(0, 1)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lh026"]
-streams_count = 1
-stream_0/stream = ExtResource("4_mgesy")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -123,12 +118,6 @@ focus_next = NodePath("../StartGameButton")
 focus_previous = NodePath("../CreditsButton")
 text = "Exit Game"
 flat = true
-
-[node name="menu_theme" type="AudioStreamPlayer" parent="."]
-
-[node name="Click" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_lh026")
-pitch_scale = 1.22
 
 [node name="CreditsOverlay" parent="." instance=ExtResource("4_7bjh4")]
 unique_name_in_owner = true
