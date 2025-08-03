@@ -47,6 +47,7 @@ func take_damage(val: int) -> void:
 	_blood_particles.restart()
 	_blood_particles.emitting = true
 
+
 #endregion
 
 #region PrivateMethods

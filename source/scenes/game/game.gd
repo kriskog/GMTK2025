@@ -36,6 +36,7 @@ func _get_character_node_children(node: Node) -> Array[CharacterNode]:
 			arr.append(child)
 	return arr
 
+
 func _get_boss_node_children(node: Node) -> Array[BossNode]:
 	var arr: Array[BossNode] = []
 	for child in node.get_children():
