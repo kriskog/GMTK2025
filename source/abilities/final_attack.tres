@@ -10,3 +10,4 @@ target = 1
 deals_damage = true
 base_damage = 9499
 damage_attribute = 4
+affects_all = true

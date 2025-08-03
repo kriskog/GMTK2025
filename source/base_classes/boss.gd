@@ -73,28 +73,23 @@ func _sort_targets(a: Character, b: Character):
 
 func _first_turn() -> void:
 	targets.sort_custom(_sort_targets)
-	var target = targets[0]
-	use_ability_on_target(0, target)
+	use_ability_on_target(0, targets, 0)
 
 
 func _second_turn() -> void:
-	for target in targets:
-		use_ability_on_target(1, target)
+	use_ability_on_target(1, targets, -1)
 
 
 func _third_turn() -> void:
 	targets.sort_custom(_sort_targets)
-	var target = targets[0]
-	use_ability_on_target(2, target)
+	use_ability_on_target(2, targets, 0)
 
 
 func _fourth_turn() -> void:
-	for target in targets:
-		use_ability_on_target(3, target)
+	use_ability_on_target(3, targets, -1)
 
 
 func _final_turn() -> void:
-	for target in targets:
-		use_ability_on_target(4, target)
+	use_ability_on_target(4, targets, -1)
 
 #endregion

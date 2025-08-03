@@ -107,26 +107,20 @@ func spend_mana(val: int) -> bool:
 	return false
 
 
-func use_ability_on_target(num: int, target: Character) -> void:
+func use_ability_on_target(ability_num: int, all_targets: Array, target_num: int) -> void:
 	var used_ability: Ability
 	# override for basic "attack" action
-	if num == -1:
+	if ability_num == BASIC_ATTACK_INDEX:
 		used_ability = basic_attack
 	else:
-		used_ability = abilities[num]
+		used_ability = abilities[ability_num]
 
 	if spend_mana(used_ability.mana_cost):
-		if used_ability.deals_damage:
-			var attack_damage: int = get_ability_damage(used_ability)
-			target.take_damage(attack_damage)
-
-		if used_ability.effect_base != null:
-			var effect: Effect = Effect.new(used_ability.effect_base)
-
-			if effect.damage_over_time and effect.damage_attribute != null:
-				effect.add_damage(get_stat_total(effect.damage_attribute))
-
-			target.add_effect(effect)
+		if used_ability.affects_all:
+			for target in all_targets:
+				_use_ability_on_target(used_ability, target)
+		else:
+			_use_ability_on_target(used_ability, all_targets[target_num])
 
 
 func add_effect(effect: Effect) -> void:
@@ -153,4 +147,17 @@ func handle_turn() -> void:
 #endregion
 
 #region PrivateMethods
+## This applies the ability effect and damage to a single target
+func _use_ability_on_target(used_ability: Ability, target: Character) -> void:
+	if used_ability.deals_damage:
+		var attack_damage: int = get_ability_damage(used_ability)
+		target.take_damage(attack_damage)
+
+	if used_ability.effect_base != null:
+		var effect: Effect = Effect.new(used_ability.effect_base)
+
+		if effect.damage_over_time and effect.damage_attribute != null:
+			effect.add_damage(get_stat_total(effect.damage_attribute))
+
+		target.add_effect(effect)
 #endregion
