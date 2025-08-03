@@ -12,3 +12,4 @@ deals_damage = false
 base_damage = 0
 damage_attribute = 5
 effect_base = ExtResource("1_vxpip")
+target_number = 0

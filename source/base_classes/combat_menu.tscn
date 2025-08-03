@@ -49,7 +49,19 @@ offset_right = 224.0
 offset_bottom = 320.0
 metadata/_edit_use_anchors_ = true
 
+[node name="AllList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 320.0
+
+[node name="SelfList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 320.0
+
 [connection signal="pressed" from="ActionList/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ActionList/Defend" to="." method="_on_defend_pressed"]
 [connection signal="item_clicked" from="AllyList" to="." method="_on_ally_list_item_clicked"]
 [connection signal="item_clicked" from="EnemyList" to="." method="_on_enemy_list_item_clicked"]
+[connection signal="item_clicked" from="AllList" to="." method="_on_all_list_item_clicked"]
+[connection signal="item_clicked" from="SelfList" to="." method="_on_self_list_item_clicked"]

@@ -12,3 +12,4 @@ deals_damage = false
 base_damage = 0
 damage_attribute = 4
 effect_base = ExtResource("1_vcm6q")
+target_number = 0

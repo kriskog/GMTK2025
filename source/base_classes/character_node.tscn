@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkktxruckx1pq"]
+[gd_scene load_steps=11 format=3 uid="uid://dkktxruckx1pq"]
 
 [ext_resource type="Texture2D" uid="uid://bn06227g1k36k" path="res://assets/sprites/Paladin.png" id="1_gurl6"]
 [ext_resource type="Script" path="res://source/base_classes/character_node.gd" id="1_wkvn8"]
@@ -14,33 +14,63 @@ bg_color = Color(1, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5s7e"]
 bg_color = Color(0, 0, 0.921569, 1)
 
-[node name="CharacterNode" type="Sprite2D"]
-texture = ExtResource("1_gurl6")
+[sub_resource type="Animation" id="Animation_koe58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qch2l"]
+resource_name = "move_forward"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-150, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqgum"]
+_data = {
+"RESET": SubResource("Animation_koe58"),
+"move_forward": SubResource("Animation_qch2l")
+}
+
+[node name="CharacterNode" type="Node2D"]
 script = ExtResource("1_wkvn8")
 
-[node name="blood_particles" type="CPUParticles2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_gurl6")
+
+[node name="blood_particles" type="CPUParticles2D" parent="sprite"]
 emitting = false
 amount = 12
 one_shot = true
 explosiveness = 0.85
 emission_shape = 3
-emission_rect_extents = Vector2(200, 200)
+emission_rect_extents = Vector2(50, 50)
 spread = 180.0
 gravity = Vector2(0, 9800)
 initial_velocity_min = 1000.0
 initial_velocity_max = 1000.0
-scale_amount_min = 100.0
-scale_amount_max = 100.0
+scale_amount_min = 20.0
+scale_amount_max = 20.0
 color = Color(0.627451, 0, 0, 1)
-
-[node name="CombatMenu" parent="." instance=ExtResource("2_hcpvi")]
-top_level = false
-anchors_preset = -1
-anchor_left = 0.164
-offset_left = 23.6
-offset_top = -40.0
-offset_right = 425.0
-offset_bottom = 186.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -64.0
@@ -49,6 +79,7 @@ offset_right = 64.0
 offset_bottom = -80.0
 theme_override_styles/background = SubResource("StyleBoxFlat_twvql")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7bfly")
+max_value = 0.0
 step = 1.0
 show_percentage = false
 
@@ -59,7 +90,24 @@ offset_right = 64.0
 offset_bottom = -64.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qpdwk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_y5s7e")
+max_value = 0.0
 step = 1.0
 show_percentage = false
 
+[node name="animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../sprite")
+libraries = {
+"": SubResource("AnimationLibrary_gqgum")
+}
+
+[node name="CombatMenu" parent="." instance=ExtResource("2_hcpvi")]
+top_level = false
+anchors_preset = -1
+anchor_left = 0.164
+offset_left = 23.6
+offset_top = -40.0
+offset_right = 425.0
+offset_bottom = 186.0
+
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
 [connection signal="turn_end" from="CombatMenu" to="." method="_on_combat_menu_turn_end"]

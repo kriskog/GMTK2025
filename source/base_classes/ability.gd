@@ -5,7 +5,6 @@ extends Resource
 #endregion
 
 #region Enums
-
 #endregion
 
 #region Constants
@@ -19,6 +18,7 @@ extends Resource
 @export var base_damage: int = 0
 @export var damage_attribute: Global.Stats = Global.Stats.STRENGTH
 @export var effect_base: EffectBase = null
+@export var target_number: Global.TargetNumber = Global.TargetNumber.ONE
 #endregion
 
 #region PublicVars

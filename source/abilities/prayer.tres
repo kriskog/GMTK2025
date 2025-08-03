@@ -12,3 +12,4 @@ deals_damage = false
 base_damage = 0
 damage_attribute = 7
 effect_base = ExtResource("1_or3ni")
+target_number = 0

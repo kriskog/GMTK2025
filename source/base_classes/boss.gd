@@ -12,10 +12,10 @@ signal dead
 #endregion
 
 #region ExportVars
-@export var _targets: Array[Character]
 #endregion
 
 #region PublicVars
+var targets: Array[CharacterNode]
 #endregion
 
 #region PrivateVars
@@ -23,7 +23,7 @@ var _current_turn: int = 0
 #endregion
 
 #region OnReadyVars
-@onready var _blood_particles: CPUParticles2D = $blood_particles
+@onready var _blood_particles: CPUParticles2D = $sprite/blood_particles
 #endregion
 
 
@@ -54,11 +54,13 @@ func handle_turn() -> void:
 	turn_end.emit(self)
 
 
-func take_damage(val: int) -> void:
-	super.take_damage(val)
-	DamageNumber.display_number(val, self.global_position)
-	_blood_particles.restart()
-	_blood_particles.emitting = true
+func take_damage(val: int, ignore_defend: bool = false) -> int:
+	var total_damage: int = super.take_damage(val, ignore_defend)
+	self.add_child(DamageNumber.new(total_damage))
+	if total_damage > 0:
+		_blood_particles.restart()
+		_blood_particles.emitting = true
+	return total_damage
 
 
 #endregion
@@ -72,35 +74,32 @@ func _sort_targets(a: Character, b: Character):
 
 
 func _first_turn() -> void:
-	_targets.sort_custom(_sort_targets)
-	var target = _targets[0]
-	for new_target in _targets:
+	targets.sort_custom(_sort_targets)
+	var target = targets[0]
+	for new_target in targets:
 		if target.statuses.has(Global.Status.PROVOKE):
 			target = new_target
-	use_ability_on_target(0, target)
+	use_ability_on_target(0, targets, 0)
 
 
 func _second_turn() -> void:
-	for target in _targets:
-		use_ability_on_target(1, target)
+	use_ability_on_target(1, targets, -1)
 
 
 func _third_turn() -> void:
-	_targets.sort_custom(_sort_targets)
-	var target = _targets[0]
-	for new_target in _targets:
+	targets.sort_custom(_sort_targets)
+	var target = targets[0]
+	for new_target in targets:
 		if target.statuses.has(Global.Status.PROVOKE):
 			target = new_target
-	use_ability_on_target(2, target)
+	use_ability_on_target(2, targets, 0)
 
 
 func _fourth_turn() -> void:
-	for target in _targets:
-		use_ability_on_target(3, target)
+	use_ability_on_target(3, targets, -1)
 
 
 func _final_turn() -> void:
-	for target in _targets:
-		use_ability_on_target(4, target)
+	use_ability_on_target(4, targets, -1)
 
 #endregion
