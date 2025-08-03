@@ -187,3 +187,5 @@ _stats = {
 6: 500,
 7: 0
 }
+
+[connection signal="dead" from="EnemyCharacters/EnemyCharacter" to="." method="_on_enemy_character_dead"]
