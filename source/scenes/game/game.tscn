@@ -183,7 +183,7 @@ _stats = {
 [node name="EnemyCharacter" parent="EnemyCharacters" instance=ExtResource("5_0ws3h")]
 position = Vector2(450, 536)
 abilities = Array[ExtResource("3_6wv2w")]([ExtResource("12_rg273"), ExtResource("13_dppcr"), ExtResource("14_35rci"), ExtResource("15_y3qdq"), ExtResource("16_s8qej")])
-character_name = "Big baddie"
+character_name = "Gargamesh"
 _stats = {
 0: 5750,
 1: 4600,

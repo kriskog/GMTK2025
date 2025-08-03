@@ -90,6 +90,7 @@ func _on_main_menu() -> void:
 
 
 func _on_start_game() -> void:
+	Global.current_loop += 1
 	transition_to_scene(Global.GAME_SCENE)
 
 
@@ -110,5 +111,4 @@ func _on_victory() -> void:
 
 
 func _on_game_over() -> void:
-	Global.current_loop += 1
 	restart_loop()
