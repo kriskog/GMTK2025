@@ -1,3 +1,4 @@
+class_name CombatMenu
 extends Control
 
 #region Signals
@@ -11,12 +12,12 @@ signal turn_end
 #endregion
 
 #region ExportVars
-@export var character: CharacterNode
-@export var allies: Array[CharacterNode]
-@export var enemies: Array[CharacterNode]
 #endregion
 
 #region PublicVars
+var character: CharacterNode
+var allies: Array[CharacterNode]
+var enemies: Array[BossNode]
 #endregion
 
 #region PrivateVars
@@ -34,6 +35,13 @@ var _basic_attack: bool = false
 #region BuiltinMethods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass
+
+
+func initialize(new_allies: Array[CharacterNode], new_enemies: Array[BossNode]) -> void:
+	allies = new_allies
+	enemies = new_enemies
+
 	for ability in character.abilities:
 		ability_list.get_popup().add_item(ability["name"].capitalize())
 	ability_list.get_popup().id_pressed.connect(_ability_pressed)
@@ -43,6 +51,9 @@ func _ready() -> void:
 
 	for enemy in enemies:
 		enemy_list.add_item(enemy["character_name"].capitalize())
+
+	enemy_list.visible = false
+	ally_list.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -96,7 +107,7 @@ func _on_ally_list_item_clicked(
 		character.use_ability_on_target(character.BASIC_ATTACK_INDEX, allies[index])
 	else:
 		character.use_ability_on_target(_chosen_ability, allies[index])
-	turn_end.emit(character)
+	turn_end.emit()
 	_reset_menu()
 
 
@@ -107,12 +118,12 @@ func _on_enemy_list_item_clicked(
 		character.use_ability_on_target(character.BASIC_ATTACK_INDEX, enemies[index])
 	else:
 		character.use_ability_on_target(_chosen_ability, enemies[index])
-	turn_end.emit(character)
+	turn_end.emit()
 	_reset_menu()
 
 
 func _on_defend_pressed() -> void:
 	_reset_menu()
-	turn_end.emit(character)
+	turn_end.emit()
 	character.defending = true
 #endregion

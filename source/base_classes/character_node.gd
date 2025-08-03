@@ -11,28 +11,25 @@ extends Character
 #endregion
 
 #region ExportVars
-@export var sprite: Texture2D
 #endregion
 
 #region PublicVars
 #endregion
 
 #region PrivateVars
-var _blood_particles: CPUParticles2D
 #endregion
 
 #region OnReadyVars
 @onready var damage_numbers_origin = $"/root/DamageNumber"
-@onready var _character_sprite: Sprite2D = $character_sprite
+@onready var combat_menu: CombatMenu = $CombatMenu
+@onready var _blood_particles: CPUParticles2D = $blood_particles
 #endregion
 
 
 #region BuiltinMethods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_blood_particles = $blood_particles
-	if sprite != null:
-		_character_sprite.texture = sprite
+	combat_menu.character = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,10 +43,17 @@ func _process(_delta: float) -> void:
 #region PublicMethods
 func take_damage(val: int) -> void:
 	super.take_damage(val)
-	DamageNumber.display_number(val, _character_sprite.global_position)
+	DamageNumber.display_number(val, self.global_position)
 	_blood_particles.restart()
 	_blood_particles.emitting = true
+
+
 #endregion
 
 #region PrivateMethods
+
 #endregion
+
+
+func _on_combat_menu_turn_end() -> void:
+	turn_end.emit(self)
