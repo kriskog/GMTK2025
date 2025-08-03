@@ -11,6 +11,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_uagsh")
 
 [node name="blood_particles" type="CPUParticles2D" parent="sprite"]
+scale = Vector2(0.25, 0.25)
 emitting = false
 amount = 12
 one_shot = true

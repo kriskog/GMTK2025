@@ -97,8 +97,7 @@ func take_damage(val: int, ignore_defend: bool = false) -> int:
 	# Take an amount of damage to health
 	var damage_taken: int = val
 	if !ignore_defend and defending:
-		@warning_ignore("integer_division")
-		damage_taken = val / 2
+		@warning_ignore("integer_division") damage_taken = val / 2
 
 	damage_taken = clamp(damage_taken, -Global.MAX_DAMAGE, Global.MAX_DAMAGE)
 	update_state(Global.Stats.HEALTH, -damage_taken)
