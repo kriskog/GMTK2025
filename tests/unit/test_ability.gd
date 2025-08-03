@@ -22,7 +22,4 @@ func test_ability_calc_damage():
 	var ability: Ability = autofree(Ability.new())
 	ability.base_damage = 2
 
-	assert_eq(
-		ability.get_total_damage(3),
-		5
-	)
+	assert_eq(ability.get_total_damage(3), 5)

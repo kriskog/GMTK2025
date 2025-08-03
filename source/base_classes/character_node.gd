@@ -25,6 +25,8 @@ var _turn_starting: bool = false
 #region OnReadyVars
 @onready var combat_menu: CombatMenu = $CombatMenu
 @onready var animation: AnimationPlayer = $animation
+@onready var _health_bar: ProgressBar = $sprite/HealthBar
+@onready var _mana_bar: ProgressBar = $sprite/ManaBar
 @onready var _blood_particles: CPUParticles2D = $sprite/blood_particles
 #endregion
 
@@ -36,6 +38,11 @@ func _ready() -> void:
 		combat_menu.character = self
 		combat_menu.hide()
 		$sprite.texture = texture
+
+		_health_bar.max_value = get_stat_total(Global.Stats.MAX_HEALTH)
+		_health_bar.value = get_stat_total(Global.Stats.HEALTH)
+		_mana_bar.max_value = get_stat_total(Global.Stats.MAX_MANA)
+		_mana_bar.value = get_stat_total(Global.Stats.MANA)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,6 +60,7 @@ func _process(_delta: float) -> void:
 #region PublicMethods
 func take_damage(val: int, ignore_defend: bool = false) -> int:
 	var total_damage = super.take_damage(val, ignore_defend)
+	_health_bar.value = get_stat_total(Global.Stats.HEALTH)
 	self.add_child(DamageNumber.new(total_damage))
 	if total_damage > 0:
 		_blood_particles.restart()
@@ -63,6 +71,12 @@ func take_damage(val: int, ignore_defend: bool = false) -> int:
 func handle_turn() -> void:
 	animation.play("move_forward")
 	_turn_starting = true
+
+
+func spend_mana(val: int) -> bool:
+	var ret_val = super.spend_mana(val)
+	_mana_bar.value = get_stat_total(Global.Stats.MANA)
+	return ret_val
 
 
 #endregion

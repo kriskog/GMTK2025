@@ -16,6 +16,7 @@ const BASIC_ATTACK_INDEX = -1
 #region ExportVars
 @export var basic_attack: Ability = preload("res://source/abilities/basic_attack.tres")
 @export var abilities: Array[Ability]
+@export var character_name: String
 ## Stats should only be accessed via the get/set functionality, since those
 ## calculate the effect bonuses properly.
 @export var _stats = {
@@ -28,7 +29,6 @@ const BASIC_ATTACK_INDEX = -1
 	Global.Stats.SPEED: 0,
 	Global.Stats.MAGIC: 0,
 }
-@export var character_name: String
 #endregion
 
 #region PublicVars
@@ -49,6 +49,12 @@ var defending: bool = false:
 		return defending
 	set(value):
 		defending = value
+
+var statuses: Array[Global.Status] = []:
+	get:
+		return statuses
+	set(value):
+		statuses = value
 #endregion
 
 #region PrivateVars
@@ -98,7 +104,14 @@ func take_damage(val: int, ignore_defend: bool = false) -> int:
 	var damage_taken: int = val
 	if !ignore_defend and defending:
 		@warning_ignore("integer_division") damage_taken = val / 2
-
+	if statuses.has(Global.Status.SHIELD):
+		damage_taken /= 2
+	if statuses.has(Global.Status.PROVOKE):
+		damage_taken /= 2
+	if statuses.has(Global.Status.HEX):
+		@warning_ignore("narrowing_conversion") damage_taken *= 1.5
+	if statuses.has(Global.Status.DAMN):
+		damage_taken *= 2
 	damage_taken = clamp(damage_taken, -Global.MAX_DAMAGE, Global.MAX_DAMAGE)
 	update_state(Global.Stats.HEALTH, -damage_taken)
 	return damage_taken
@@ -132,6 +145,7 @@ func use_ability_on_target(ability_num: int, all_targets: Array, target_num: int
 
 func add_effect(effect: Effect) -> void:
 	_effects.append(effect)
+	set_statuses()
 
 
 func decay_effects(val: int = 1) -> void:
@@ -147,6 +161,14 @@ func decay_effects(val: int = 1) -> void:
 			still_active.append(effect)
 
 	_effects = still_active
+	set_statuses()
+
+
+func set_statuses() -> void:
+	statuses.clear()
+	for effect in _effects:
+		if effect.status != Global.Status.NONE:
+			statuses.append(effect.status)
 
 
 func handle_turn() -> void:
@@ -168,6 +190,8 @@ func _use_ability_on_target(used_ability: Ability, target: Character) -> void:
 		# friendly moves heal
 		if used_ability.target == Global.Target.ALLY:
 			attack_damage *= -1
+		if statuses.has(Global.Status.BLESS):
+			attack_damage *= 2
 		target.take_damage(attack_damage)
 
 	if used_ability.effect_base != null:

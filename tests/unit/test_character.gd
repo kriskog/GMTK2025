@@ -1,7 +1,6 @@
 extends GutTest
 
 
-
 func test_character_node_calc_damage():
 	## Make a character with 3 strength,
 	# and calculate the damage of a 2 base damage STRENGTH ability
@@ -13,10 +12,7 @@ func test_character_node_calc_damage():
 	char_node.abilities.append(ability)
 
 	var char_abil = char_node.abilities[0]
-	assert_eq(
-		char_node.get_ability_damage(char_abil),
-		5
-	)
+	assert_eq(char_node.get_ability_damage(char_abil), 5)
 
 
 func test_combat() -> void:
@@ -33,12 +29,9 @@ func test_combat() -> void:
 	char_node_2._stats[Global.Stats.HEALTH] = 10
 
 	# This should deal 5 damage
-	char_node_1.use_ability_on_target(0, char_node_2)
+	char_node_1.use_ability_on_target(0, [char_node_2], 0)
 
-	assert_eq(
-		char_node_2._stats[Global.Stats.HEALTH],
-		5
-	)
+	assert_eq(char_node_2._stats[Global.Stats.HEALTH], 5)
 
 
 func test_ability_effect_stat_increase():
@@ -82,7 +75,7 @@ func test_ability_effect_stat_increase():
 	}
 
 	# use the ability. It should deal no damage, and apply an active effect.
-	char_node_1.use_ability_on_target(0, char_node_2)
+	char_node_1.use_ability_on_target(0, [char_node_2], 0)
 
 	for _num in 2:
 		# 1 effect has been applied
@@ -135,7 +128,7 @@ func test_ability_effect_damage_over_time():
 	}
 
 	# use the ability. It should deal no damage, and apply an active effect.
-	char_node_1.use_ability_on_target(0, char_node_2)
+	char_node_1.use_ability_on_target(0, [char_node_2], 0)
 
 	## TURN 0
 	# 1 effect has been applied

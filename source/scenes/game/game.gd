@@ -49,12 +49,16 @@ func _get_boss_node_children(node: Node) -> Array[BossNode]:
 
 
 func _on_combat_menu_turn_end(character) -> void:
-	if character.is_hasted:
-		character.is_hasted = false  #not implemented
+	if character.statuses.has(Global.Status.HASTE):
+		var haste_index = character.statuses.find(Global.Status.HASTE)
+		character.statuses.remove_at(haste_index)
 	else:
 		character.is_turn = false
 		turncount += 1
 		turncount %= charlist.size()
+		if turncount == 0:
+			for chara in charlist:
+				chara.decay_effects()
 		if charlist[turncount].get_stat_total(Global.Stats.HEALTH) > 0:
 			charlist[turncount].handle_turn()
 		else:
@@ -63,8 +67,8 @@ func _on_combat_menu_turn_end(character) -> void:
 			if dead_characters < 4:
 				_on_combat_menu_turn_end(charlist[turncount])
 			else:
-				get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
+				SignalBus.game_over.emit()
 
 
 func _on_enemy_character_dead() -> void:
-	get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
+	SignalBus.victory.emit()

@@ -32,6 +32,7 @@ func _init(effect_base: EffectBase) -> void:
 	self.damage_over_time = effect_base.damage_over_time
 	self.damage = effect_base.damage
 	self.damage_attribute = effect_base.damage_attribute
+	self.status = effect_base.status
 
 	cur_duration = max_duration
 

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://byajlsyhpku3u"]
+
+[ext_resource type="Resource" uid="uid://ca02hqec53lfc" path="res://source/effects/prayer.tres" id="1_or3ni"]
+[ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_sbr1l"]
+
+[resource]
+script = ExtResource("1_sbr1l")
+name = "Prayer"
+mana_cost = 400
+target = 0
+deals_damage = false
+base_damage = 0
+damage_attribute = 7
+effect_base = ExtResource("1_or3ni")
+target_number = 0
