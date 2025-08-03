@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EffectBase" load_steps=2 format=3 uid="uid://hornpa81vfmc"]
+[gd_resource type="Resource" script_class="EffectBase" load_steps=3 format=3 uid="uid://hornpa81vfmc"]
 
 [ext_resource type="Script" path="res://source/base_classes/effect_base.gd" id="1_lt0ex"]
+[ext_resource type="Texture2D" uid="uid://544tklr7o1wf" path="res://assets/icons/poison.png" id="1_rtlhl"]
 
 [resource]
 script = ExtResource("1_lt0ex")
@@ -19,3 +20,4 @@ damage_over_time = true
 damage = 200
 damage_attribute = 7
 status = 0
+eff_icon = ExtResource("1_rtlhl")
