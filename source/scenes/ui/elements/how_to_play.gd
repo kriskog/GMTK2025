@@ -15,6 +15,7 @@ func _process(_delta: float) -> void:
 
 #region signal funcs
 
+
 func _on_close_pressed() -> void:
 	# Signals main to kill current scenes and bring up main menu.
 	SignalBus.button_clicked.emit()
