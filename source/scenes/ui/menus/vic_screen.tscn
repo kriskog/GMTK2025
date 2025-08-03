@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://brp2o2727l6ag"]
+[gd_scene load_steps=5 format=3 uid="uid://brp2o2727l6ag"]
 
 [ext_resource type="Script" path="res://source/scenes/ui/menus/vic_screen.gd" id="1_qqcnm"]
 [ext_resource type="Texture2D" uid="uid://buqfa1uttqsj3" path="res://assets/sprites/floor-perspective.png" id="2_l3hul"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="3_b0lhe"]
+[ext_resource type="AudioStream" uid="uid://i4cnjddwfo2m" path="res://assets/audio/Damare/Victory_Fanfare.ogg" id="4_lbkdc"]
 
 [node name="VicScreen" type="Control"]
 layout_mode = 3
@@ -71,5 +72,8 @@ theme = ExtResource("3_b0lhe")
 text = "Continue
 "
 flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lbkdc")
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
