@@ -6,6 +6,7 @@ var hints = [
 	"Do you know what all of your abilities do?",
 ]
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Global.current_loop >= 4:
