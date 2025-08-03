@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b8wo6054qwir"]
+[gd_scene load_steps=17 format=3 uid="uid://b8wo6054qwir"]
 
 [ext_resource type="Script" path="res://source/scenes/game/game.gd" id="1_j8onw"]
 [ext_resource type="PackedScene" uid="uid://dkktxruckx1pq" path="res://source/base_classes/character_node.tscn" id="2_bdwci"]
@@ -6,16 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bh3gawj40w8gw" path="res://source/scenes/ui/menus/pause_menu.tscn" id="3_05073"]
 [ext_resource type="PackedScene" uid="uid://dwtkov7ka5eov" path="res://source/base_classes/boss.tscn" id="5_0ws3h"]
 [ext_resource type="FontFile" uid="uid://byi1bnbahet5u" path="res://assets/fonts/press start 2p/press-start-2p-latin-400-normal.ttf" id="5_1t1lk"]
+[ext_resource type="Texture2D" uid="uid://bn06227g1k36k" path="res://assets/sprites/Paladin.png" id="6_20rbr"]
 [ext_resource type="Script" path="res://source/scenes/game/pause_button.gd" id="6_brkmx"]
 [ext_resource type="Texture2D" uid="uid://cnffjmtkh7vw6" path="res://assets/sprites/Ranger.png" id="7_1x6u6"]
 [ext_resource type="Texture2D" uid="uid://brcau6xyee5mw" path="res://assets/sprites/Mage.png" id="8_51qtb"]
-[ext_resource type="Texture2D" uid="uid://deayr4nxl426u" path="res://icon.svg" id="8_mqeqv"]
 [ext_resource type="Texture2D" uid="uid://76umvqpt3aj" path="res://assets/sprites/Cleric.png" id="9_63wxa"]
-[ext_resource type="Resource" uid="uid://bo5at62y6wj4c" path="res://source/abilities/first_attack.tres" id="10_5yrhe"]
-[ext_resource type="Resource" uid="uid://cjnlpfuhdh6nl" path="res://source/abilities/second_attack.tres" id="11_uxhet"]
-[ext_resource type="Resource" uid="uid://dmxhu7w7q1dqq" path="res://source/abilities/third_attack.tres" id="12_k6exb"]
-[ext_resource type="Resource" uid="uid://w3jn2np8cx2p" path="res://source/abilities/fourth_attack.tres" id="13_mnhss"]
-[ext_resource type="Resource" uid="uid://bhx3sgg1ie6dk" path="res://source/abilities/final_attack.tres" id="14_iq1l6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4448"]
 
@@ -76,7 +71,8 @@ script = ExtResource("6_brkmx")
 [node name="PlayableCharacters" type="Node2D" parent="."]
 
 [node name="PlayableCharacter" parent="PlayableCharacters" instance=ExtResource("2_bdwci")]
-position = Vector2(1350, 836)
+position = Vector2(1350, 800)
+texture = ExtResource("6_20rbr")
 abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
 _stats = {
 0: 20,
@@ -140,21 +136,6 @@ character_name = "Me"
 
 [node name="EnemyCharacters" type="Node2D" parent="."]
 
-[node name="EnemyCharacter" parent="EnemyCharacters" node_paths=PackedStringArray("_targets") instance=ExtResource("5_0ws3h")]
+[node name="EnemyCharacter" parent="EnemyCharacters" instance=ExtResource("5_0ws3h")]
 position = Vector2(450, 536)
-texture = ExtResource("8_mqeqv")
-_targets = [NodePath("../../PlayableCharacters/PlayableCharacter"), NodePath("../../PlayableCharacters/PlayableCharacter2"), NodePath("../../PlayableCharacters/PlayableCharacter3"), NodePath("../../PlayableCharacters/PlayableCharacter4")]
-abilities = Array[ExtResource("3_6wv2w")]([ExtResource("10_5yrhe"), ExtResource("11_uxhet"), ExtResource("12_k6exb"), ExtResource("13_mnhss"), ExtResource("14_iq1l6")])
-_stats = {
-0: 5750,
-1: 4600,
-2: 0,
-3: 0,
-4: 500,
-5: 500,
-6: 500,
-7: 500
-}
-character_name = "Big Dawg"
-
-[connection signal="dead" from="EnemyCharacters/EnemyCharacter" to="." method="_on_enemy_character_dead"]
+character_name = "BIGBOYE"
