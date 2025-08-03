@@ -15,7 +15,7 @@ _stat_changes = {
 6: 0,
 7: 0
 }
-max_duration = 1
+max_duration = 2
 damage_over_time = false
 damage = 0
 damage_attribute = 0

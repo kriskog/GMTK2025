@@ -27,7 +27,7 @@ func fill_charlist() -> void:
 			node.combat_menu.initialize(allies, enemies)
 
 	for enemy in enemies:
-		enemy.targets = allies
+		enemy.targets = allies.duplicate()
 
 	charlist[0].handle_turn()
 
