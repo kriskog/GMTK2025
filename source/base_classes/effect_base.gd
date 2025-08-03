@@ -29,6 +29,7 @@ applied to a character.
 @export var damage_over_time: bool = false
 @export var damage: int = 0
 @export var damage_attribute: Global.Stats
+@export var status: Global.Status
 
 #endregion
 

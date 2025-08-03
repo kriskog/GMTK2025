@@ -49,6 +49,12 @@ var defending: bool = false:
 		return defending
 	set(value):
 		defending = value
+
+var statuses: Array[Global.Status] = []:
+	get:
+		return statuses
+	set(value):
+		statuses = value
 #endregion
 
 #region PrivateVars
@@ -96,6 +102,14 @@ func get_ability_damage(ability: Ability) -> int:
 func take_damage(val: int) -> void:
 	# Take an amount of damage to health
 	@warning_ignore("integer_division") var damage_taken = val if !defending else val / 2
+	if statuses.has(Global.Status.SHIELD):
+		damage_taken /= 2
+	if statuses.has(Global.Status.PROVOKE):
+		damage_taken /= 2
+	if statuses.has(Global.Status.HEX):
+		damage_taken *= 1.5
+	if statuses.has(Global.Status.DAMN):
+		damage_taken *= 2
 	update_state(Global.Stats.HEALTH, -damage_taken)
 
 
@@ -118,6 +132,9 @@ func use_ability_on_target(num: int, target: Character) -> void:
 	if spend_mana(used_ability.mana_cost):
 		if used_ability.deals_damage:
 			var attack_damage: int = get_ability_damage(used_ability)
+			if statuses.has(Global.Status.BLESS):
+				attack_damage *= 2
+			
 			target.take_damage(attack_damage)
 
 		if used_ability.effect_base != null:
@@ -127,7 +144,9 @@ func use_ability_on_target(num: int, target: Character) -> void:
 				effect.add_damage(get_stat_total(effect.damage_attribute))
 
 			target.add_effect(effect)
-
+		
+		if used_ability.effect_base != null && used_ability.effect_base.status:
+			target.statuses.append(used_ability.effect_base.status)
 
 func add_effect(effect: Effect) -> void:
 	_effects.append(effect)

@@ -46,12 +46,16 @@ func _get_boss_node_children(node: Node) -> Array[BossNode]:
 
 
 func _on_combat_menu_turn_end(character) -> void:
-	if character.is_hasted:
-		character.is_hasted = false  #not implemented
+	if character.statuses.has(Global.Status.HASTE):
+		var haste_index = character.statuses.find(Global.Status.HASTE)
+		character.statuses.remove_at(haste_index)
 	else:
 		character.is_turn = false
 		turncount += 1
 		turncount %= charlist.size()
+		if turncount == 0:
+			for chara in charlist:
+				chara.statuses.clear()
 		if charlist[turncount].get_stat_total(Global.Stats.HEALTH) > 0:
 			charlist[turncount].is_turn = true
 			if turncount == 4:

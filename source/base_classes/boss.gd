@@ -74,6 +74,9 @@ func _sort_targets(a: Character, b: Character):
 func _first_turn() -> void:
 	_targets.sort_custom(_sort_targets)
 	var target = _targets[0]
+	for new_target in _targets:
+		if target.statuses.has(Global.Status.PROVOKE):
+			target = new_target
 	use_ability_on_target(0, target)
 
 
@@ -85,6 +88,9 @@ func _second_turn() -> void:
 func _third_turn() -> void:
 	_targets.sort_custom(_sort_targets)
 	var target = _targets[0]
+	for new_target in _targets:
+		if target.statuses.has(Global.Status.PROVOKE):
+			target = new_target
 	use_ability_on_target(2, target)
 
 

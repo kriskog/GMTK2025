@@ -27,9 +27,9 @@ color = Color(0.627451, 0, 0, 1)
 top_level = false
 anchors_preset = -1
 anchor_left = 0.164
-offset_left = 28.6
-offset_top = -171.0
-offset_right = 430.0
-offset_bottom = 55.0
+offset_left = 23.6
+offset_top = -40.0
+offset_right = 425.0
+offset_bottom = 186.0
 
 [connection signal="turn_end" from="CombatMenu" to="." method="_on_combat_menu_turn_end"]

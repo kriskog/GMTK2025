@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EffectBase" load_steps=2 format=3 uid="uid://dbncpglj77abm"]
+
+[ext_resource type="Script" path="res://source/base_classes/effect_base.gd" id="1_ollya"]
+
+[resource]
+script = ExtResource("1_ollya")
+_stat_changes = {
+0: 0,
+1: 0,
+2: 0,
+3: 0,
+4: 0,
+5: 0,
+6: 0,
+7: 0
+}
+max_duration = 1
+damage_over_time = false
+damage = 0
+damage_attribute = 0
+status = 4
