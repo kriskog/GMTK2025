@@ -62,8 +62,16 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0.864675, 0.864675, 0.864675, 1)
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 19
-text = "Now you've done it..."
+theme_override_font_sizes/font_size = 25
+text = "You've messed up. You confidently
+overwrote your old save mid boss 
+fight, and now must beat it or 
+start over. 
+Surely there must be a way,
+ if you just try again and again and again...
+
+Attack, Defend, use abilities 
+and magic. Do your best to survive."
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="Background/MenuWindow/MarginContainerOuter"]

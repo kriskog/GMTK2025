@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://rf2i4nghah"]
+[gd_scene load_steps=4 format=3 uid="uid://8gnjytl6gp0a"]
 
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_xe3le"]
 [ext_resource type="Script" path="res://source/scenes/ui/elements/creditsscreen.gd" id="2_b0fwd"]
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 offset_right = 636.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 theme = ExtResource("1_xe3le")
 script = ExtResource("2_b0fwd")
 
@@ -134,9 +134,12 @@ select_005.ogg
 
 GPL 3.0
 
-Stephen Challener (Redshrike), hosted by OpenGameArt.org
+Stephen Challener
+(Redshrike) OpenGameArt.org
 
-https://opengameart.org/content/3-form-rpg-boss-harlequin-epicycle
+https://opengameart.org/
+content/3-form-rpg-boss
+-harlequin-epicycle
 
 Boss sprite
 
