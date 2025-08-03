@@ -144,7 +144,7 @@ func use_ability_on_target(ability_num: int, all_targets: Array, target_num: int
 		if used_ability.target_number == Global.TargetNumber.ALL:
 			for target in all_targets:
 				_use_ability_on_target(used_ability, target)
-		if used_ability.target_number == Global.TargetNumber.SELF:
+		elif used_ability.target_number == Global.TargetNumber.SELF:
 			_use_ability_on_target(used_ability, self)
 		else:
 			_use_ability_on_target(used_ability, all_targets[target_num])
