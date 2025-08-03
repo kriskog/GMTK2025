@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhp21twrj3kvv"]
+
+[ext_resource type="Texture2D" uid="uid://dl0lios0v0b8y" path="res://assets/sprites/sparkle.png" id="1_u8lug"]
+[ext_resource type="Script" path="res://source/base_classes/sparkles.gd" id="1_vyvpv"]
+
+[node name="Node2D" type="CPUParticles2D"]
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 0.55
+texture = ExtResource("1_u8lug")
+spread = 180.0
+gravity = Vector2(0, -450)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+script = ExtResource("1_vyvpv")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
