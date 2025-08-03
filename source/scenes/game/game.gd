@@ -67,8 +67,8 @@ func _on_combat_menu_turn_end(character) -> void:
 			if dead_characters < 4:
 				_on_combat_menu_turn_end(charlist[turncount])
 			else:
-				get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
+				SignalBus.game_over.emit()
 
 
 func _on_enemy_character_dead() -> void:
-	get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
+	SignalBus.victory.emit()

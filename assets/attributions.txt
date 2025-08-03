@@ -1,0 +1,9 @@
+CC BY-NC 4.0 - Damare - https://linktr.ee/notdamare
+Boss_Fight.ogg
+Credits.ogg
+Game_Over.ogg
+Title_screen.ogg
+Victory_Fanfare.ogg
+
+CC0 - Kenney - https://kenney.nl
+Interface Sounds (1.0) - select_005.ogg

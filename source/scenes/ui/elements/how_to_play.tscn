@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj1gpalilav3a"]
+[gd_scene load_steps=3 format=3 uid="uid://bj1gpalilav3a"]
 
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_4s7sv"]
 [ext_resource type="Script" path="res://source/scenes/ui/elements/how_to_play.gd" id="2_0i2w2"]
-[ext_resource type="AudioStream" uid="uid://ovmpjbrynvci" path="res://assets/sounds/click.wav" id="3_jihpi"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d06qo"]
-streams_count = 1
-stream_0/stream = ExtResource("3_jihpi")
 
 [node name="HowToPlay" type="Control"]
 layout_mode = 3
@@ -78,7 +73,3 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "Close"
 flat = true
-
-[node name="Click" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_d06qo")
-pitch_scale = 1.22
