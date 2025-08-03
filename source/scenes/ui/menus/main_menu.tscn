@@ -1,16 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4dnm8piv8tvd"]
+[gd_scene load_steps=6 format=3 uid="uid://b4dnm8piv8tvd"]
 
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_6eapn"]
 [ext_resource type="Script" path="res://source/scenes/ui/menus/main_menu.gd" id="1_76osk"]
-[ext_resource type="PackedScene" uid="uid://dcnf2nu2hbogy" path="res://source/scenes/ui/elements/CreditsOverlay.tscn" id="4_7bjh4"]
+[ext_resource type="Texture2D" uid="uid://bpjgs8vuswnyw" path="res://assets/sprites/wall.png" id="3_0kra6"]
+[ext_resource type="PackedScene" uid="uid://rf2i4nghah" path="res://source/scenes/ui/elements/creditsscreen.tscn" id="4_7bjh4"]
 [ext_resource type="PackedScene" uid="uid://bj1gpalilav3a" path="res://source/scenes/ui/elements/how_to_play.tscn" id="5_2o6w5"]
-
-[sub_resource type="Gradient" id="Gradient_nxiiu"]
-colors = PackedColorArray(0, 0.341176, 0.337255, 1, 0, 0.541176, 0.533333, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dxicj"]
-gradient = SubResource("Gradient_nxiiu")
-fill_from = Vector2(0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -22,26 +16,13 @@ grow_vertical = 2
 theme = ExtResource("1_6eapn")
 script = ExtResource("1_76osk")
 
-[node name="BackgroundTexture" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_dxicj")
-
-[node name="Background" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0.339625, 0, 0.00367862, 1)
+offset_right = 1918.0
+offset_bottom = 1083.0
+texture = ExtResource("3_0kra6")
+expand_mode = 2
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
