@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EffectBase" load_steps=2 format=3 uid="uid://ck2ttrmye5ba7"]
+[gd_resource type="Resource" script_class="EffectBase" load_steps=3 format=3 uid="uid://ck2ttrmye5ba7"]
 
 [ext_resource type="Script" path="res://source/base_classes/effect_base.gd" id="1_k8kgd"]
+[ext_resource type="Texture2D" uid="uid://cigfy13ps775c" path="res://assets/icons/damn.png" id="1_qm1gx"]
 
 [resource]
 script = ExtResource("1_k8kgd")
@@ -19,3 +20,4 @@ damage_over_time = false
 damage = 0
 damage_attribute = 0
 status = 5
+eff_icon = ExtResource("1_qm1gx")

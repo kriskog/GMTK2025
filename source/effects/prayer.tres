@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EffectBase" load_steps=2 format=3 uid="uid://ca02hqec53lfc"]
+[gd_resource type="Resource" script_class="EffectBase" load_steps=3 format=3 uid="uid://ca02hqec53lfc"]
 
+[ext_resource type="Texture2D" uid="uid://b7ooklxjl745l" path="res://assets/icons/prayer.png" id="1_j2owb"]
 [ext_resource type="Script" path="res://source/base_classes/effect_base.gd" id="1_r7dye"]
 
 [resource]
@@ -19,3 +20,4 @@ damage_over_time = false
 damage = 0
 damage_attribute = 7
 status = 0
+eff_icon = ExtResource("1_j2owb")
