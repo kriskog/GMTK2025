@@ -28,6 +28,7 @@ var _turn_starting: bool = false
 @onready var _health_bar: ProgressBar = $sprite/HealthBar
 @onready var _mana_bar: ProgressBar = $sprite/ManaBar
 @onready var _blood_particles: CPUParticles2D = $sprite/blood_particles
+@onready var _effect_container: ItemList = $sprite/effect_container
 #endregion
 
 
@@ -79,10 +80,22 @@ func spend_mana(val: int) -> bool:
 	return ret_val
 
 
+func add_effect(effect: Effect) -> void:
+	super.add_effect(effect)
+	_set_icons()
+
+
+func decay_effects(val: int = 1) -> void:
+	super.decay_effects(val)
+	_set_icons()
 #endregion
 
 #region PrivateMethods
-
+func _set_icons() -> void:
+	_effect_container.clear()
+	for effect in _effects:
+		if effect.eff_icon != null:
+			_effect_container.add_icon_item(effect.eff_icon)
 #endregion
 
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://buatatqnadfig"]
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cgt8a0md0nqi6"]
 
 [ext_resource type="Resource" uid="uid://4gavvsf2p1bl" path="res://source/effects/apply_shield.tres" id="1_ju0g8"]
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_u1ykm"]

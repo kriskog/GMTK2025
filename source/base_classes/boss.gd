@@ -24,10 +24,15 @@ var _current_turn: int = 0
 
 #region OnReadyVars
 @onready var _blood_particles: CPUParticles2D = $sprite/blood_particles
+@onready var _effect_container: ItemList = $sprite/effect_container
 #endregion
 
 
 #region BuiltinMethods
+func _ready():
+	_effect_container.scale = Vector2(1, 1) / $sprite.scale
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if get_stat_total(Global.Stats.HEALTH) <= 0:
@@ -62,6 +67,16 @@ func take_damage(val: int, ignore_defend: bool = false) -> int:
 		_blood_particles.emitting = true
 	return total_damage
 
+
+
+func add_effect(effect: Effect) -> void:
+	super.add_effect(effect)
+	_set_icons()
+
+
+func decay_effects(val: int = 1) -> void:
+	super.decay_effects(val)
+	_set_icons()
 
 #endregion
 
@@ -100,4 +115,10 @@ func _fourth_turn() -> void:
 func _final_turn() -> void:
 	use_ability_on_target(4, targets, -1)
 
+
+func _set_icons() -> void:
+	_effect_container.clear()
+	for effect in _effects:
+		if effect.eff_icon != null:
+			_effect_container.add_icon_item(effect.eff_icon)
 #endregion

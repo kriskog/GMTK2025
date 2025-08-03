@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://byajlsyhpku3u"]
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://vsq2orguraei"]
 
 [ext_resource type="Resource" uid="uid://ca02hqec53lfc" path="res://source/effects/prayer.tres" id="1_or3ni"]
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_sbr1l"]

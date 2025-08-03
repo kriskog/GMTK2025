@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://b1gsjksibo053"]
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://h5xi8vcdmjvv"]
 
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_qbjsg"]
 [ext_resource type="Resource" uid="uid://b02teuov364j7" path="res://source/effects/heal.tres" id="1_vc1ga"]
