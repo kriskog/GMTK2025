@@ -218,9 +218,11 @@ func _use_ability_on_target(used_ability: Ability, target: Character) -> void:
 			var sparkles: BuffSparkles = BuffSparkles.new()
 			target.add_child(sparkles)
 			if used_ability.target == Global.Target.ALLY:
+				SignalBus.buff.emit()
 				sparkles.color = Color(0, 1, 1)
 				sparkles.gravity.y = -450
 			else:
+				SignalBus.debuff.emit()
 				sparkles.color = Color(0.5, 0, 1)
 				sparkles.gravity.y = 450
 #endregion
