@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b8wo6054qwir"]
+[gd_scene load_steps=32 format=3 uid="uid://b8wo6054qwir"]
 
 [ext_resource type="Script" path="res://source/scenes/game/game.gd" id="1_j8onw"]
 [ext_resource type="PackedScene" uid="uid://dkktxruckx1pq" path="res://source/base_classes/character_node.tscn" id="2_bdwci"]
@@ -11,12 +11,23 @@
 [ext_resource type="Script" path="res://source/scenes/game/pause_button.gd" id="6_brkmx"]
 [ext_resource type="Texture2D" uid="uid://cnffjmtkh7vw6" path="res://assets/sprites/Ranger.png" id="7_1x6u6"]
 [ext_resource type="Texture2D" uid="uid://brcau6xyee5mw" path="res://assets/sprites/Mage.png" id="8_51qtb"]
+[ext_resource type="Resource" path="res://source/abilities/heal.tres" id="8_arku4"]
 [ext_resource type="Texture2D" uid="uid://76umvqpt3aj" path="res://assets/sprites/Cleric.png" id="9_63wxa"]
+[ext_resource type="Resource" path="res://source/abilities/holy_shield.tres" id="9_e147k"]
+[ext_resource type="Resource" uid="uid://bb3hjwrroyg26" path="res://source/abilities/provoke.tres" id="10_h37q8"]
+[ext_resource type="Resource" path="res://source/abilities/barrage.tres" id="11_kvqsr"]
+[ext_resource type="Resource" path="res://source/abilities/poison_arrow.tres" id="12_8qjer"]
 [ext_resource type="Resource" uid="uid://bo5at62y6wj4c" path="res://source/abilities/first_attack.tres" id="12_rg273"]
 [ext_resource type="Resource" uid="uid://cjnlpfuhdh6nl" path="res://source/abilities/second_attack.tres" id="13_dppcr"]
+[ext_resource type="Resource" path="res://source/abilities/hex.tres" id="14_4ukqs"]
 [ext_resource type="Resource" uid="uid://dmxhu7w7q1dqq" path="res://source/abilities/third_attack.tres" id="14_35rci"]
+[ext_resource type="Resource" path="res://source/abilities/magic_missile.tres" id="15_aa11w"]
 [ext_resource type="Resource" uid="uid://w3jn2np8cx2p" path="res://source/abilities/fourth_attack.tres" id="15_y3qdq"]
+[ext_resource type="Resource" path="res://source/abilities/siphon_magic.tres" id="16_8vs32"]
 [ext_resource type="Resource" uid="uid://bhx3sgg1ie6dk" path="res://source/abilities/final_attack.tres" id="16_s8qej"]
+[ext_resource type="Resource" path="res://source/abilities/prayer.tres" id="18_isofv"]
+[ext_resource type="Resource" path="res://source/abilities/damn.tres" id="19_rekyx"]
+[ext_resource type="Resource" path="res://source/abilities/haste.tres" id="20_y4ny8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4448"]
 
@@ -25,36 +36,6 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dafvg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4yk8c"]
-
-[sub_resource type="Resource" id="Resource_bophf"]
-script = ExtResource("3_6wv2w")
-name = "Flame"
-mana_cost = 1
-target = 1
-deals_damage = true
-base_damage = 5
-damage_attribute = 7
-target_number = 0
-
-[sub_resource type="Resource" id="Resource_eh7mo"]
-script = ExtResource("3_6wv2w")
-name = "git commit"
-mana_cost = 0
-target = 0
-deals_damage = true
-base_damage = -99999999
-damage_attribute = 4
-target_number = 2
-
-[sub_resource type="Resource" id="Resource_kg5gm"]
-script = ExtResource("3_6wv2w")
-name = "Heal all"
-mana_cost = 0
-target = 0
-deals_damage = true
-base_damage = 5
-damage_attribute = 7
-target_number = 1
 
 [node name="Game Screen" type="Node2D"]
 script = ExtResource("1_j8onw")
@@ -100,72 +81,73 @@ script = ExtResource("6_brkmx")
 [node name="PlayableCharacter" parent="PlayableCharacters" instance=ExtResource("2_bdwci")]
 position = Vector2(1350, 800)
 texture = ExtResource("6_20rbr")
-abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf"), SubResource("Resource_eh7mo")])
+abilities = Array[ExtResource("3_6wv2w")]([ExtResource("8_arku4"), ExtResource("9_e147k"), ExtResource("10_h37q8")])
+character_name = "Paladin"
 _stats = {
-0: 20,
-1: 20,
-2: 5,
-3: 5,
+0: 2500,
+1: 1500,
+2: 500,
+3: 400,
 4: 5,
 5: 5,
 6: 5,
 7: 8
 }
-character_name = "Me"
 
 [node name="PlayableCharacter2" parent="PlayableCharacters" instance=ExtResource("2_bdwci")]
 position = Vector2(1350, 600)
 texture = ExtResource("7_1x6u6")
-abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
+abilities = Array[ExtResource("3_6wv2w")]([ExtResource("11_kvqsr"), ExtResource("12_8qjer")])
+character_name = "Ranger"
 _stats = {
-0: 20,
-1: 20,
-2: 5,
-3: 5,
+0: 1300,
+1: 750,
+2: 400,
+3: 270,
 4: 5,
 5: 5,
 6: 5,
 7: 8
 }
-character_name = "Me"
 
 [node name="PlayableCharacter3" parent="PlayableCharacters" instance=ExtResource("2_bdwci")]
 position = Vector2(1350, 400)
 texture = ExtResource("8_51qtb")
-abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf")])
+abilities = Array[ExtResource("3_6wv2w")]([ExtResource("14_4ukqs"), ExtResource("15_aa11w"), ExtResource("16_8vs32")])
+character_name = "Mage"
 _stats = {
-0: 20,
-1: 20,
-2: 5,
-3: 5,
+0: 1300,
+1: 750,
+2: 1000,
+3: 800,
 4: 5,
 5: 5,
 6: 5,
 7: 8
 }
-character_name = "Me"
 
 [node name="PlayableCharacter4" parent="PlayableCharacters" instance=ExtResource("2_bdwci")]
 position = Vector2(1350, 200)
 texture = ExtResource("9_63wxa")
-abilities = Array[ExtResource("3_6wv2w")]([SubResource("Resource_bophf"), SubResource("Resource_kg5gm")])
+abilities = Array[ExtResource("3_6wv2w")]([ExtResource("19_rekyx"), ExtResource("20_y4ny8"), ExtResource("18_isofv")])
+character_name = "Cleric"
 _stats = {
-0: 20,
-1: 20,
-2: 5,
-3: 5,
+0: 1500,
+1: 1000,
+2: 1000,
+3: 800,
 4: 5,
 5: 5,
 6: 5,
 7: 8
 }
-character_name = "Me"
 
 [node name="EnemyCharacters" type="Node2D" parent="."]
 
 [node name="EnemyCharacter" parent="EnemyCharacters" instance=ExtResource("5_0ws3h")]
 position = Vector2(450, 536)
 abilities = Array[ExtResource("3_6wv2w")]([ExtResource("12_rg273"), ExtResource("13_dppcr"), ExtResource("14_35rci"), ExtResource("15_y3qdq"), ExtResource("16_s8qej")])
+character_name = "BIGBOYE"
 _stats = {
 0: 5750,
 1: 4600,
@@ -176,4 +158,3 @@ _stats = {
 6: 500,
 7: 0
 }
-character_name = "BIGBOYE"

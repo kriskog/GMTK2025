@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://b1gsjksibo053"]
+
+[ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_qbjsg"]
+[ext_resource type="Resource" uid="uid://b02teuov364j7" path="res://source/effects/heal.tres" id="1_vc1ga"]
+
+[resource]
+script = ExtResource("1_qbjsg")
+name = "Heal"
+mana_cost = 0
+target = 0
+deals_damage = false
+base_damage = 0
+damage_attribute = 4
+effect_base = ExtResource("1_vc1ga")
+target_number = 0

@@ -68,14 +68,16 @@ func take_damage(val: int, ignore_defend: bool = false) -> int:
 
 #region PrivateMethods
 func _sort_targets(a: Character, b: Character):
-	if a.get_stat_total(Global.Stats.HEALTH) < b.get_stat_total(Global.Stats.HEALTH):
-		return true
-	return false
+	return a.get_stat_total(Global.Stats.HEALTH) < b.get_stat_total(Global.Stats.HEALTH)
 
 
 func _first_turn() -> void:
 	targets.sort_custom(_sort_targets)
-	use_ability_on_target(0, targets, 0)
+	var target = 0
+	for new_target in targets.size():
+		if targets[new_target].statuses.has(Global.Status.PROVOKE):
+			target = new_target
+	use_ability_on_target(0, targets, target)
 
 
 func _second_turn() -> void:
@@ -84,7 +86,11 @@ func _second_turn() -> void:
 
 func _third_turn() -> void:
 	targets.sort_custom(_sort_targets)
-	use_ability_on_target(2, targets, 0)
+	var target = 0
+	for new_target in targets.size():
+		if targets[new_target].statuses.has(Global.Status.PROVOKE):
+			target = new_target
+	use_ability_on_target(2, targets, target)
 
 
 func _fourth_turn() -> void:

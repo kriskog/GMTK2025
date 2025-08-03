@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://ccucdinrvy633"]
+
+[ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_jp0wi"]
+
+[resource]
+script = ExtResource("1_jp0wi")
+name = "Barrage"
+mana_cost = 240
+target = 1
+deals_damage = true
+base_damage = 900
+damage_attribute = 5
+target_number = 0
