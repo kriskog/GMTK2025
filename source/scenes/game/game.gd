@@ -1,15 +1,12 @@
 extends Node
 
-var turncount
-var charlist = []
-var dead_characters = 0
+var turncount: int = 0
+var charlist: Array[Node] = []
+var dead_characters: int = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$PlayableCharacter.is_turn = true
-	update_labels()
-	turncount = 0
 	fill_charlist()
 
 
@@ -19,11 +16,32 @@ func _process(_delta: float) -> void:
 
 
 func fill_charlist() -> void:
-	charlist.append($PlayableCharacter)
-	charlist.append($PlayableCharacter2)
-	charlist.append($PlayableCharacter3)
-	charlist.append($PlayableCharacter4)
-	charlist.append($EnemyCharacter)
+	var allies: Array[CharacterNode] = _get_character_node_children($PlayableCharacters)
+	var enemies: Array[BossNode] = _get_boss_node_children($EnemyCharacters)
+	charlist.append_array(allies)
+	charlist.append_array(enemies)
+
+	for node in charlist:
+		node.turn_end.connect(_on_combat_menu_turn_end)
+		if node is CharacterNode:
+			node.combat_menu.initialize(allies, enemies)
+
+	charlist[0].is_turn = true
+
+
+func _get_character_node_children(node: Node) -> Array[CharacterNode]:
+	var arr: Array[CharacterNode] = []
+	for child in node.get_children():
+		if child is CharacterNode:
+			arr.append(child)
+	return arr
+
+func _get_boss_node_children(node: Node) -> Array[BossNode]:
+	var arr: Array[BossNode] = []
+	for child in node.get_children():
+		if child is BossNode:
+			arr.append(child)
+	return arr
 
 
 func _on_combat_menu_turn_end(character) -> void:
@@ -50,40 +68,6 @@ func _on_combat_menu_turn_end(character) -> void:
 			#else:
 			#turncount += 1
 			#charlist[turncount].is_turn = true
-
-
-### THESE ARE TEMPORARY, REPLACE THESE EVENTUALLY
-func update_labels() -> void:
-	var player: CharacterNode = $PlayableCharacter
-	var boss: CharacterNode = $EnemyCharacter
-
-	$EnemyCharacter/Label.text = (
-		("HP: %d/%d\n" + "MP: %d/%d\n" + "STR: %d\n" + "DEX: %d\n" + "MAG: %d\n" + "SPD: %d")
-		% [
-			boss.get_stat_total(Global.Stats.HEALTH),
-			boss.get_stat_total(Global.Stats.MAX_HEALTH),
-			boss.get_stat_total(Global.Stats.MANA),
-			boss.get_stat_total(Global.Stats.MAX_MANA),
-			boss.get_stat_total(Global.Stats.STRENGTH),
-			boss.get_stat_total(Global.Stats.DEXTERITY),
-			boss.get_stat_total(Global.Stats.MAGIC),
-			boss.get_stat_total(Global.Stats.SPEED)
-		]
-	)
-
-	$PlayableCharacter/Label.text = (
-		("HP: %d/%d\n" + "MP: %d/%d\n" + "STR: %d\n" + "DEX: %d\n" + "MAG: %d\n" + "SPD: %d")
-		% [
-			player.get_stat_total(Global.Stats.HEALTH),
-			player.get_stat_total(Global.Stats.MAX_HEALTH),
-			player.get_stat_total(Global.Stats.MANA),
-			player.get_stat_total(Global.Stats.MAX_MANA),
-			player.get_stat_total(Global.Stats.STRENGTH),
-			player.get_stat_total(Global.Stats.DEXTERITY),
-			player.get_stat_total(Global.Stats.MAGIC),
-			player.get_stat_total(Global.Stats.SPEED)
-		]
-	)
 
 
 func _on_enemy_character_dead() -> void:

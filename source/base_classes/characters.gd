@@ -1,7 +1,8 @@
 class_name Character
-extends Node2D
+extends Sprite2D
 
 #region Signals
+@warning_ignore("unused_signal") signal turn_end(character: Character)
 #endregion
 
 #region Enums

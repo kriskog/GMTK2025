@@ -1,7 +1,7 @@
-extends CharacterNode
+class_name BossNode
+extends Character
 
 #region Signals
-signal turn_end
 signal dead
 #endregion
 
@@ -23,6 +23,7 @@ var _current_turn: int = 0
 #endregion
 
 #region OnReadyVars
+@onready var _blood_particles: CPUParticles2D = $blood_particles
 #endregion
 
 
@@ -52,6 +53,12 @@ func handle_turn() -> void:
 			_final_turn()
 	turn_end.emit(self)
 
+
+func take_damage(val: int) -> void:
+	super.take_damage(val)
+	DamageNumber.display_number(val, self.global_position)
+	_blood_particles.restart()
+	_blood_particles.emitting = true
 
 #endregion
 
