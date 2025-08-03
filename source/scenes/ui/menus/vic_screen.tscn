@@ -33,11 +33,22 @@ anchor_left = 0.384375
 anchor_top = 0.282407
 anchor_right = 0.615625
 anchor_bottom = 0.717593
-offset_left = -98.0
+offset_left = -290.0
 offset_top = 0.000457764
-offset_right = 98.0
+offset_right = 290.0
 offset_bottom = -0.000427246
 grow_horizontal = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_b0lhe")
+theme_override_colors/default_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_selected_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.843137, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center][wave]YOU WIN"
 
 [node name="DeathText" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
