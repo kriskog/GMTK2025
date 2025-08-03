@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://source/global.gd"
-DamageNumber="*res://damage_number.gd"
 
 [display]
 

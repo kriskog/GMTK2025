@@ -1,12 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkktxruckx1pq"]
+[gd_scene load_steps=7 format=3 uid="uid://dkktxruckx1pq"]
 
 [ext_resource type="Texture2D" uid="uid://bn06227g1k36k" path="res://assets/sprites/Paladin.png" id="1_gurl6"]
 [ext_resource type="Script" path="res://source/base_classes/character_node.gd" id="1_wkvn8"]
 [ext_resource type="PackedScene" uid="uid://chp32cemfwlbk" path="res://source/base_classes/combat_menu.tscn" id="2_hcpvi"]
 
-[node name="CharacterNode" type="Sprite2D"]
-texture = ExtResource("1_gurl6")
+[sub_resource type="Animation" id="Animation_koe58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qch2l"]
+resource_name = "move_forward"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-150, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqgum"]
+_data = {
+"RESET": SubResource("Animation_koe58"),
+"move_forward": SubResource("Animation_qch2l")
+}
+
+[node name="CharacterNode" type="Node2D"]
 script = ExtResource("1_wkvn8")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_gurl6")
 
 [node name="blood_particles" type="CPUParticles2D" parent="."]
 emitting = false
@@ -27,9 +66,16 @@ color = Color(0.627451, 0, 0, 1)
 top_level = false
 anchors_preset = -1
 anchor_left = 0.164
-offset_left = 28.6
+offset_left = 45.0
 offset_top = -171.0
-offset_right = 430.0
-offset_bottom = 55.0
+offset_right = 536.0
+offset_bottom = 160.0
+
+[node name="animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../sprite")
+libraries = {
+"": SubResource("AnimationLibrary_gqgum")
+}
 
 [connection signal="turn_end" from="CombatMenu" to="." method="_on_combat_menu_turn_end"]
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]

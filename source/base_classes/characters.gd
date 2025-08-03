@@ -1,5 +1,5 @@
 class_name Character
-extends Sprite2D
+extends Node2D
 
 #region Signals
 @warning_ignore("unused_signal")
@@ -147,6 +147,9 @@ func decay_effects(val: int = 1) -> void:
 
 	_effects = still_active
 
+
+func handle_turn() -> void:
+	pass
 #endregion
 
 #region PrivateMethods

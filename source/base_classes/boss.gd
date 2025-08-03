@@ -56,7 +56,7 @@ func handle_turn() -> void:
 
 func take_damage(val: int) -> void:
 	super.take_damage(val)
-	DamageNumber.display_number(val, self.global_position)
+	self.add_child(DamageNumber.new(val))
 	_blood_particles.restart()
 	_blood_particles.emitting = true
 

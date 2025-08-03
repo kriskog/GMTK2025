@@ -26,7 +26,7 @@ func fill_charlist() -> void:
 		if node is CharacterNode:
 			node.combat_menu.initialize(allies, enemies)
 
-	charlist[0].is_turn = true
+	charlist[0].handle_turn()
 
 
 func _get_character_node_children(node: Node) -> Array[CharacterNode]:
@@ -52,10 +52,9 @@ func _on_combat_menu_turn_end(character) -> void:
 		character.is_turn = false
 		turncount += 1
 		turncount %= charlist.size()
+		print(turncount)
 		if charlist[turncount].get_stat_total(Global.Stats.HEALTH) > 0:
-			charlist[turncount].is_turn = true
-			if turncount == 4:
-				charlist[turncount].handle_turn()
+			charlist[turncount].handle_turn()
 		else:
 			# Not perfect but should work for now
 			dead_characters += 1
@@ -63,12 +62,6 @@ func _on_combat_menu_turn_end(character) -> void:
 				_on_combat_menu_turn_end(charlist[turncount])
 			else:
 				get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
-			#while charlist[turncount].get_stat_total(Global.Stats.HEALTH) <= 0:
-			#if turncount == 3:
-			#turncount = 0
-			#else:
-			#turncount += 1
-			#charlist[turncount].is_turn = true
 
 
 func _on_enemy_character_dead() -> void:
