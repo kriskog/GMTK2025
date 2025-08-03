@@ -24,8 +24,8 @@ var _turn_starting: bool = false
 
 #region OnReadyVars
 @onready var combat_menu: CombatMenu = $CombatMenu
-@onready var _blood_particles: CPUParticles2D = $blood_particles
 @onready var animation: AnimationPlayer = $animation
+@onready var _blood_particles: CPUParticles2D = $blood_particles
 #endregion
 
 
@@ -60,6 +60,8 @@ func take_damage(val: int) -> void:
 func handle_turn() -> void:
 	animation.play("move_forward")
 	_turn_starting = true
+
+
 #endregion
 
 #region PrivateMethods

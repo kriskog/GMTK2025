@@ -26,18 +26,12 @@ func display_number(value: int):
 
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(
-		self, "position:y", position.y - 24, 0.20
-	).set_ease(Tween.EASE_OUT)
-	tween.tween_property(
-		self, "position:y", position.y, 0.25
-	).set_ease(Tween.EASE_IN).set_delay(0.25)
-	tween.tween_property(
-		self, "scale", Vector2.ZERO, 0.25
-	).set_ease(Tween.EASE_IN).set_delay(0.5)
-	tween.tween_property(
-		self, "position", size / 2, 0.25
-	).set_ease(Tween.EASE_IN).set_delay(0.5)
+	tween.tween_property(self, "position:y", position.y - 24, 0.20).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position:y", position.y, 0.25).set_ease(Tween.EASE_IN).set_delay(
+		0.25
+	)
+	tween.tween_property(self, "scale", Vector2.ZERO, 0.25).set_ease(Tween.EASE_IN).set_delay(0.5)
+	tween.tween_property(self, "position", size / 2, 0.25).set_ease(Tween.EASE_IN).set_delay(0.5)
 
 	await tween.finished
 	queue_free()
