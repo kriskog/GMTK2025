@@ -47,7 +47,6 @@ offset_bottom = 320.0
 layout_mode = 1
 offset_right = 224.0
 offset_bottom = 320.0
-metadata/_edit_use_anchors_ = true
 
 [node name="AllList" type="ItemList" parent="."]
 layout_mode = 0
