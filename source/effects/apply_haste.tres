@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EffectBase" load_steps=2 format=3 uid="uid://dhto8t6xn8q0"]
+[gd_resource type="Resource" script_class="EffectBase" load_steps=3 format=3 uid="uid://dhto8t6xn8q0"]
 
+[ext_resource type="Texture2D" uid="uid://ctd2qho6uhb2c" path="res://assets/icons/haste.png" id="1_67smv"]
 [ext_resource type="Script" path="res://source/base_classes/effect_base.gd" id="1_iy6n0"]
 
 [resource]
@@ -19,3 +20,4 @@ damage_over_time = false
 damage = 0
 damage_attribute = 0
 status = 6
+eff_icon = ExtResource("1_67smv")

@@ -32,7 +32,7 @@ func _on_how_to_play_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	SignalBus.button_clicked.emit()
-	%CreditsOverlay.show()
+	SignalBus.credits.emit()
 
 
 func _on_exit_game_pressed() -> void:

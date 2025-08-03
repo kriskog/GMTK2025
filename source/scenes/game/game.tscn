@@ -1,11 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://b8wo6054qwir"]
+[gd_scene load_steps=33 format=3 uid="uid://b8wo6054qwir"]
 
 [ext_resource type="Script" path="res://source/scenes/game/game.gd" id="1_j8onw"]
 [ext_resource type="PackedScene" uid="uid://dkktxruckx1pq" path="res://source/base_classes/character_node.tscn" id="2_bdwci"]
 [ext_resource type="Texture2D" uid="uid://bj2njbr42o3yu" path="res://assets/sprites/floor_with_wall.png" id="2_dbgh0"]
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="3_6wv2w"]
 [ext_resource type="PackedScene" uid="uid://bh3gawj40w8gw" path="res://source/scenes/ui/menus/pause_menu.tscn" id="3_05073"]
-[ext_resource type="Texture2D" uid="uid://cr26s3b8lcfft" path="res://assets/textures/pausebutton.png" id="4_byh6j"]
 [ext_resource type="PackedScene" uid="uid://dwtkov7ka5eov" path="res://source/base_classes/boss.tscn" id="5_0ws3h"]
 [ext_resource type="FontFile" uid="uid://byi1bnbahet5u" path="res://assets/fonts/press start 2p/press-start-2p-latin-400-normal.ttf" id="5_1t1lk"]
 [ext_resource type="Texture2D" uid="uid://bn06227g1k36k" path="res://assets/sprites/Paladin.png" id="6_20rbr"]
@@ -75,10 +74,10 @@ offset_bottom = 40.0
 
 [node name="PauseButton" type="Button" parent="UI"]
 layout_mode = 0
-offset_left = 26.0
-offset_top = -41.0
-offset_right = 290.0
-offset_bottom = 158.0
+offset_left = -27.0
+offset_top = -27.0
+offset_right = 237.0
+offset_bottom = 172.0
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -89,7 +88,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_d4448")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_h0okj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_dafvg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4yk8c")
-icon = ExtResource("4_byh6j")
+text = "||"
 script = ExtResource("6_brkmx")
 
 [node name="PlayableCharacters" type="Node2D" parent="."]

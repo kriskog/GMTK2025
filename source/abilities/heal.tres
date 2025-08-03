@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b1gsjksibo053"]
+=======
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://h5xi8vcdmjvv"]
+>>>>>>> main
 
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_qbjsg"]
 
@@ -7,7 +11,14 @@ script = ExtResource("1_qbjsg")
 name = "Heal"
 mana_cost = 100
 target = 0
+<<<<<<< HEAD
 deals_damage = true
 base_damage = 500
 damage_attribute = 4
+=======
+deals_damage = false
+base_damage = 500
+damage_attribute = 7
+effect_base = ExtResource("1_vc1ga")
+>>>>>>> main
 target_number = 0

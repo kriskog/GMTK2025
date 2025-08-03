@@ -13,6 +13,7 @@ func _ready() -> void:
 	SignalBus.close_game.connect(_on_close_game)
 	SignalBus.victory.connect(_on_victory)
 	SignalBus.game_over.connect(_on_game_over)
+	SignalBus.credits.connect(_on_credits)
 	SignalBus.main_menu.emit()
 
 
@@ -77,11 +78,8 @@ func restart_loop() -> void:
 	#Insert dialogue changing every loop? Hints?
 
 
-func roll_credits(_loops: int) -> void:
-	await Global.Audio_manager.sound_finished
-	#you won after loops loops
-	#roll credits after - for now, lets return to menu
-	transition_to_scene(Global.MAIN_MENU_SCENE)
+func roll_credits() -> void:
+	transition_to_scene(Global.CREDITS_SCENE)
 
 
 #handle signals: start_game, exit_game, game_over, victory
@@ -99,11 +97,15 @@ func _on_close_game() -> void:
 	close_game()
 
 
+func _on_credits() -> void:
+	roll_credits()
+
+
 #Before emitting this signal, await completion of the victory fanfare
 #(~10s or await Global.Audio_manager.sound_finished) or require confirmation
 #by the user before moving on to rolling credits. Await cannot be used in a signal function.
 func _on_victory() -> void:
-	roll_credits(Global.current_loop)
+	roll_credits()
 	Global.current_loop = 0
 
 

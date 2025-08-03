@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://byajlsyhpku3u"]
+=======
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://vsq2orguraei"]
+>>>>>>> main
 
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_sbr1l"]
 
