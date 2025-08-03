@@ -16,6 +16,7 @@ const BASIC_ATTACK_INDEX = -1
 #region ExportVars
 @export var basic_attack: Ability = preload("res://source/abilities/basic_attack.tres")
 @export var abilities: Array[Ability]
+@export var character_name: String
 ## Stats should only be accessed via the get/set functionality, since those
 ## calculate the effect bonuses properly.
 @export var _stats = {
@@ -28,7 +29,6 @@ const BASIC_ATTACK_INDEX = -1
 	Global.Stats.SPEED: 0,
 	Global.Stats.MAGIC: 0,
 }
-@export var character_name: String
 #endregion
 
 #region PublicVars
@@ -145,6 +145,7 @@ func use_ability_on_target(ability_num: int, all_targets: Array, target_num: int
 
 func add_effect(effect: Effect) -> void:
 	_effects.append(effect)
+	set_statuses()
 
 
 func decay_effects(val: int = 1) -> void:
@@ -160,6 +161,14 @@ func decay_effects(val: int = 1) -> void:
 			still_active.append(effect)
 
 	_effects = still_active
+	set_statuses()
+
+
+func set_statuses() -> void:
+	statuses.clear()
+	for effect in _effects:
+		if effect.status != Global.Status.NONE:
+			statuses.append(effect.status)
 
 
 func handle_turn() -> void:

@@ -58,7 +58,7 @@ func _on_combat_menu_turn_end(character) -> void:
 		turncount %= charlist.size()
 		if turncount == 0:
 			for chara in charlist:
-				chara.statuses.clear()
+				chara.decay_effects()
 		if charlist[turncount].get_stat_total(Global.Stats.HEALTH) > 0:
 			charlist[turncount].handle_turn()
 		else:

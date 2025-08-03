@@ -13,7 +13,7 @@
 [ext_resource type="Resource" path="res://source/abilities/heal.tres" id="8_arku4"]
 [ext_resource type="Texture2D" uid="uid://76umvqpt3aj" path="res://assets/sprites/Cleric.png" id="9_63wxa"]
 [ext_resource type="Resource" path="res://source/abilities/holy_shield.tres" id="9_e147k"]
-[ext_resource type="Resource" path="res://source/abilities/provoke.tres" id="10_h37q8"]
+[ext_resource type="Resource" uid="uid://bb3hjwrroyg26" path="res://source/abilities/provoke.tres" id="10_h37q8"]
 [ext_resource type="Resource" path="res://source/abilities/barrage.tres" id="11_kvqsr"]
 [ext_resource type="Resource" path="res://source/abilities/poison_arrow.tres" id="12_8qjer"]
 [ext_resource type="Resource" uid="uid://bo5at62y6wj4c" path="res://source/abilities/first_attack.tres" id="12_rg273"]
@@ -81,6 +81,7 @@ script = ExtResource("6_brkmx")
 position = Vector2(1350, 800)
 texture = ExtResource("6_20rbr")
 abilities = Array[ExtResource("3_6wv2w")]([ExtResource("8_arku4"), ExtResource("9_e147k"), ExtResource("10_h37q8")])
+character_name = "Paladin"
 _stats = {
 0: 2500,
 1: 1500,
@@ -91,12 +92,12 @@ _stats = {
 6: 5,
 7: 8
 }
-character_name = "Paladin"
 
 [node name="PlayableCharacter2" parent="PlayableCharacters" instance=ExtResource("2_bdwci")]
 position = Vector2(1350, 600)
 texture = ExtResource("7_1x6u6")
 abilities = Array[ExtResource("3_6wv2w")]([ExtResource("11_kvqsr"), ExtResource("12_8qjer")])
+character_name = "Ranger"
 _stats = {
 0: 1300,
 1: 750,
@@ -107,12 +108,12 @@ _stats = {
 6: 5,
 7: 8
 }
-character_name = "Ranger"
 
 [node name="PlayableCharacter3" parent="PlayableCharacters" instance=ExtResource("2_bdwci")]
 position = Vector2(1350, 400)
 texture = ExtResource("8_51qtb")
 abilities = Array[ExtResource("3_6wv2w")]([ExtResource("14_4ukqs"), ExtResource("15_aa11w"), ExtResource("16_8vs32")])
+character_name = "Mage"
 _stats = {
 0: 1300,
 1: 750,
@@ -123,12 +124,12 @@ _stats = {
 6: 5,
 7: 8
 }
-character_name = "Mage"
 
 [node name="PlayableCharacter4" parent="PlayableCharacters" instance=ExtResource("2_bdwci")]
 position = Vector2(1350, 200)
 texture = ExtResource("9_63wxa")
 abilities = Array[ExtResource("3_6wv2w")]([ExtResource("19_rekyx"), ExtResource("20_y4ny8"), ExtResource("18_isofv")])
+character_name = "Cleric"
 _stats = {
 0: 1500,
 1: 1000,
@@ -139,13 +140,13 @@ _stats = {
 6: 5,
 7: 8
 }
-character_name = "Cleric"
 
 [node name="EnemyCharacters" type="Node2D" parent="."]
 
 [node name="EnemyCharacter" parent="EnemyCharacters" instance=ExtResource("5_0ws3h")]
 position = Vector2(450, 536)
 abilities = Array[ExtResource("3_6wv2w")]([ExtResource("12_rg273"), ExtResource("13_dppcr"), ExtResource("14_35rci"), ExtResource("15_y3qdq"), ExtResource("16_s8qej")])
+character_name = "BIGBOYE"
 _stats = {
 0: 5750,
 1: 4600,
@@ -156,4 +157,3 @@ _stats = {
 6: 500,
 7: 0
 }
-character_name = "BIGBOYE"

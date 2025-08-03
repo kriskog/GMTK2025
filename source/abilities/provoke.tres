@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://dd5di55hx53dg"]
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bb3hjwrroyg26"]
 
 [ext_resource type="Resource" uid="uid://uqdux2df6e3j" path="res://source/effects/apply_provoke.tres" id="1_g1act"]
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_hcwug"]
@@ -12,4 +12,4 @@ deals_damage = false
 base_damage = 0
 damage_attribute = 4
 effect_base = ExtResource("1_g1act")
-target_number = 0
+target_number = 2
