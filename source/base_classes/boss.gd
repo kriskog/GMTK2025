@@ -12,10 +12,10 @@ signal dead
 #endregion
 
 #region ExportVars
-@export var _targets: Array[Character]
 #endregion
 
 #region PublicVars
+var targets: Array[CharacterNode]
 #endregion
 
 #region PrivateVars
@@ -40,6 +40,7 @@ func _process(_delta: float) -> void:
 #region PublicMethods
 func handle_turn() -> void:
 	_current_turn += 1
+	print("here")
 	match _current_turn:
 		1:
 			_first_turn()
@@ -72,29 +73,29 @@ func _sort_targets(a: Character, b: Character):
 
 
 func _first_turn() -> void:
-	_targets.sort_custom(_sort_targets)
-	var target = _targets[0]
+	targets.sort_custom(_sort_targets)
+	var target = targets[0]
 	use_ability_on_target(0, target)
 
 
 func _second_turn() -> void:
-	for target in _targets:
+	for target in targets:
 		use_ability_on_target(1, target)
 
 
 func _third_turn() -> void:
-	_targets.sort_custom(_sort_targets)
-	var target = _targets[0]
+	targets.sort_custom(_sort_targets)
+	var target = targets[0]
 	use_ability_on_target(2, target)
 
 
 func _fourth_turn() -> void:
-	for target in _targets:
+	for target in targets:
 		use_ability_on_target(3, target)
 
 
 func _final_turn() -> void:
-	for target in _targets:
+	for target in targets:
 		use_ability_on_target(4, target)
 
 #endregion

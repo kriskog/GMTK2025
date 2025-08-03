@@ -26,6 +26,9 @@ func fill_charlist() -> void:
 		if node is CharacterNode:
 			node.combat_menu.initialize(allies, enemies)
 
+	for enemy in enemies:
+		enemy.targets = allies
+
 	charlist[0].handle_turn()
 
 
