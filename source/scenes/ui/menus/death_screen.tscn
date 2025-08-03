@@ -80,6 +80,7 @@ theme = ExtResource("2_rymfl")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_shmxc")
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="VBoxContainer/GiveUp" to="." method="_on_give_up_pressed"]
