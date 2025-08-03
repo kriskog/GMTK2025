@@ -1,11 +1,14 @@
 [gd_scene load_steps=2 format=3 uid="uid://dkktxruckx1pq"]
 
 [ext_resource type="Script" path="res://source/base_classes/character_node.gd" id="1_wkvn8"]
+[ext_resource type="Texture2D" uid="uid://bn06227g1k36k" path="res://assets/sprites/Paladin.png" id="2_8c4xo"]
 
 [node name="CharacterNode" type="Node2D"]
 script = ExtResource("1_wkvn8")
 
 [node name="character_sprite" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_8c4xo")
 
 [node name="blood_particles" type="CPUParticles2D" parent="."]
 emitting = false
