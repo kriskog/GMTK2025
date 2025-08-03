@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://c24yfvws1ky12"]
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://doosgh0325den"]
 
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_lrfj5"]
 [ext_resource type="Resource" uid="uid://dhto8t6xn8q0" path="res://source/effects/apply_haste.tres" id="1_vcm6q"]
@@ -13,3 +13,5 @@ base_damage = 0
 damage_attribute = 4
 effect_base = ExtResource("1_vcm6q")
 target_number = 0
+restore_mana = false
+mana_restored = 0

@@ -120,7 +120,6 @@ func take_damage(val: int, ignore_defend: bool = false) -> int:
 	else:
 		SignalBus.attack1.emit()
 
-
 	update_state(Global.Stats.HEALTH, -damage_taken)
 	return damage_taken
 

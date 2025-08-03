@@ -31,9 +31,6 @@ func _ready() -> void:
 	SignalBus.attack5.connect(_on_attack5)
 	SignalBus.buff.connect(_on_buff)
 	SignalBus.debuff.connect(_on_debuff)
-	
-
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -81,23 +78,30 @@ func _on_credits() -> void:
 	stop_all_sounds()
 	credits_theme.play()
 
+
 func _on_attack1() -> void:
 	attack1.play()
+
 
 func _on_attack2() -> void:
 	attack2.play()
 
+
 func _on_attack3() -> void:
 	attack3.play()
+
 
 func _on_attack4() -> void:
 	attack4.play()
 
+
 func _on_attack5() -> void:
 	attack5.play()
 
+
 func _on_buff() -> void:
 	buff.play()
-	
+
+
 func _on_debuff() -> void:
 	debuff.play()
