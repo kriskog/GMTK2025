@@ -83,10 +83,12 @@ func _first_turn() -> void:
 	for new_target in targets.size():
 		if targets[new_target].statuses.has(Global.Status.PROVOKE):
 			target = new_target
+	SignalBus.attack5.emit()
 	use_ability_on_target(0, targets, target)
 
 
 func _second_turn() -> void:
+	SignalBus.attack5.emit()
 	use_ability_on_target(1, targets, -1)
 
 
@@ -96,14 +98,17 @@ func _third_turn() -> void:
 	for new_target in targets.size():
 		if targets[new_target].statuses.has(Global.Status.PROVOKE):
 			target = new_target
+	SignalBus.attack5.emit()
 	use_ability_on_target(2, targets, target)
 
 
 func _fourth_turn() -> void:
+	SignalBus.attack5.emit()
 	use_ability_on_target(3, targets, -1)
 
 
 func _final_turn() -> void:
+	SignalBus.attack5.emit()
 	use_ability_on_target(4, targets, -1)
 
 
