@@ -151,7 +151,10 @@ func decay_effects(val: int = 1) -> void:
 
 func handle_turn() -> void:
 	pass
+
+
 #endregion
+
 
 #region PrivateMethods
 ## This applies the ability effect and damage to a single target

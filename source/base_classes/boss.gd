@@ -33,6 +33,7 @@ func _process(_delta: float) -> void:
 	if get_stat_total(Global.Stats.HEALTH) <= 0:
 		dead.emit()
 
+
 #endregion
 
 

@@ -64,6 +64,7 @@ func handle_turn() -> void:
 	animation.play("move_forward")
 	_turn_starting = true
 
+
 #endregion
 
 #region PrivateMethods
