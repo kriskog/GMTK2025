@@ -4,6 +4,14 @@ Credits.ogg
 Game_Over.ogg
 Title_screen.ogg
 Victory_Fanfare.ogg
+Mega_Hit.ogg
+Normal_hit.ogg
+Normal_hit_2.ogg
+Normal_hit_3.ogg
+Weird_hit.ogg
+buff.ogg
+debuff.ogg
+
 
 CC0 - Kenney - https://kenney.nl
 Interface Sounds (1.0) - select_005.ogg

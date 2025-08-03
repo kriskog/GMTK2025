@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://shdlq4dqjb7x"]
+[gd_scene load_steps=15 format=3 uid="uid://shdlq4dqjb7x"]
 
 [ext_resource type="Script" path="res://source/scenes/audio/audio_manager.gd" id="1_4bvod"]
 [ext_resource type="AudioStream" uid="uid://ce85or4fy5ury" path="res://assets/audio/Kenney/select_005.ogg" id="2_10oci"]
@@ -7,6 +7,13 @@
 [ext_resource type="AudioStream" uid="uid://g4dxww3j18m8" path="res://assets/audio/Damare/Credits.ogg" id="4_satw3"]
 [ext_resource type="AudioStream" uid="uid://i4cnjddwfo2m" path="res://assets/audio/Damare/Victory_Fanfare.ogg" id="5_hg1jj"]
 [ext_resource type="AudioStream" uid="uid://ccar4sg3igmrx" path="res://assets/audio/Damare/Game_Over.ogg" id="6_fja8j"]
+[ext_resource type="AudioStream" uid="uid://d33frb5fk2o8f" path="res://assets/audio/Damare/Normal Hit.ogg" id="8_nhn11"]
+[ext_resource type="AudioStream" uid="uid://mxk1b2xfj0n5" path="res://assets/audio/Damare/Normal Hit 2.ogg" id="9_s5hbl"]
+[ext_resource type="AudioStream" uid="uid://bhti7gb0kdiuo" path="res://assets/audio/Damare/Normal Hit 3.ogg" id="10_7cbo8"]
+[ext_resource type="AudioStream" uid="uid://donqw0u7w78f5" path="res://assets/audio/Damare/Weird Hit.ogg" id="11_20x36"]
+[ext_resource type="AudioStream" uid="uid://b3vclsxjqh50o" path="res://assets/audio/Damare/Mega Hit.ogg" id="12_vcgeh"]
+[ext_resource type="AudioStream" uid="uid://dbnhfpeavh3ed" path="res://assets/audio/Damare/Buff.ogg" id="13_nmruw"]
+[ext_resource type="AudioStream" uid="uid://tv07o7skjsva" path="res://assets/audio/Damare/Debuff.ogg" id="14_2gqj2"]
 
 [node name="Audio_manager" type="Node"]
 script = ExtResource("1_4bvod")
@@ -28,3 +35,24 @@ stream = ExtResource("5_hg1jj")
 
 [node name="loss_dirge" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_fja8j")
+
+[node name="attack1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nhn11")
+
+[node name="attack2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_s5hbl")
+
+[node name="attack3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_7cbo8")
+
+[node name="attack4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_20x36")
+
+[node name="attack5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_vcgeh")
+
+[node name="buff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_nmruw")
+
+[node name="debuff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_2gqj2")
