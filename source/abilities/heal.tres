@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://h5xi8vcdmjvv"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b1gsjksibo053"]
 
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_qbjsg"]
 
@@ -11,3 +11,5 @@ deals_damage = true
 base_damage = 500
 damage_attribute = 4
 target_number = 0
+restore_mana = false
+mana_restored = 0
