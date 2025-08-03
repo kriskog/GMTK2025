@@ -7,3 +7,9 @@ Victory_Fanfare.ogg
 
 CC0 - Kenney - https://kenney.nl
 Interface Sounds (1.0) - select_005.ogg
+
+
+GPL 3.0
+Stephen Challener (Redshrike), hosted by OpenGameArt.org
+https://opengameart.org/content/3-form-rpg-boss-harlequin-epicycle
+Boss sprite
