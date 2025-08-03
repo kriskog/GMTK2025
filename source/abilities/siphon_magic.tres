@@ -7,9 +7,9 @@
 script = ExtResource("1_jy30p")
 name = "Siphon Magic"
 mana_cost = 0
-target = 1
+target = 0
 deals_damage = false
 base_damage = 0
 damage_attribute = 4
 effect_base = ExtResource("1_70hif")
-target_number = 0
+target_number = 2

@@ -72,7 +72,7 @@ func close_game() -> void:
 
 
 func restart_loop() -> void:
-	transition_to_scene(Global.MAIN_MENU_SCENE)
+	transition_to_scene(Global.DEATH_SCENE)
 	#transition_to_scene(Global.GAME_SCENE) swap to this after the restart works
 	#Insert dialogue changing every loop? Hints?
 

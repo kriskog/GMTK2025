@@ -55,6 +55,12 @@ func initialize(new_allies: Array[CharacterNode], new_enemies: Array[BossNode]) 
 		enemy_list.add_item(enemy["character_name"].capitalize())
 
 	self_list.add_item("Self")
+	enemy_list.set_item_tooltip_enabled(0, false)
+	ally_list.set_item_tooltip_enabled(0, false)
+	ally_list.set_item_tooltip_enabled(1, false)
+	ally_list.set_item_tooltip_enabled(2, false)
+	ally_list.set_item_tooltip_enabled(3, false)
+	self_list.set_item_tooltip_enabled(0, false)
 
 	_reset_menu()
 

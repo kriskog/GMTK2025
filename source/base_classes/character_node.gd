@@ -47,6 +47,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	_mana_bar.value = get_stat_total(Global.Stats.MANA)
 	if Engine.is_editor_hint():
 		if texture != null:
 			$sprite.texture = texture
@@ -75,7 +76,6 @@ func handle_turn() -> void:
 
 func spend_mana(val: int) -> bool:
 	var ret_val = super.spend_mana(val)
-	_mana_bar.value = get_stat_total(Global.Stats.MANA)
 	return ret_val
 
 
