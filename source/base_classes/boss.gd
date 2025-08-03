@@ -40,7 +40,6 @@ func _process(_delta: float) -> void:
 #region PublicMethods
 func handle_turn() -> void:
 	_current_turn += 1
-	print("here")
 	match _current_turn:
 		1:
 			_first_turn()
