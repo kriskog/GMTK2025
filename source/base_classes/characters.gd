@@ -142,6 +142,9 @@ func use_ability_on_target(ability_num: int, all_targets: Array, target_num: int
 		else:
 			_use_ability_on_target(used_ability, all_targets[target_num])
 
+		if used_ability.restore_mana:
+			update_state(Global.Stats.MANA, used_ability.mana_restored)
+
 
 func add_effect(effect: Effect) -> void:
 	_effects.append(effect)

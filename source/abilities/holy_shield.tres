@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cgt8a0md0nqi6"]
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://buatatqnadfig"]
 
 [ext_resource type="Resource" uid="uid://4gavvsf2p1bl" path="res://source/effects/apply_shield.tres" id="1_ju0g8"]
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_u1ykm"]
@@ -12,4 +12,4 @@ deals_damage = false
 base_damage = 0
 damage_attribute = 4
 effect_base = ExtResource("1_ju0g8")
-target_number = 0
+target_number = 1

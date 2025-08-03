@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bdee67lp52bm3"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://8nsm4r0omrxa"]
 
-[ext_resource type="Resource" uid="uid://cal7uhqk0iau8" path="res://source/effects/add_mana.tres" id="1_70hif"]
 [ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_jy30p"]
 
 [resource]
@@ -11,5 +10,6 @@ target = 1
 deals_damage = false
 base_damage = 0
 damage_attribute = 4
-effect_base = ExtResource("1_70hif")
 target_number = 0
+restore_mana = true
+mana_restored = 300
