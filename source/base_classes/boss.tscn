@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dwtkov7ka5eov"]
 
 [ext_resource type="Script" path="res://source/base_classes/boss.gd" id="1_fq40b"]
-[ext_resource type="Texture2D" uid="uid://b6mka4mtuf4oo" path="res://assets/sprites/CC0cat.png" id="2_uagsh"]
+[ext_resource type="Texture2D" uid="uid://bqhy0syv7a1jw" path="res://assets/sprites/threeformsPJ2.png" id="2_tbwkm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2tb4"]
 
@@ -21,10 +21,12 @@
 script = ExtResource("1_fq40b")
 
 [node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-56, 0)
 scale = Vector2(4, 4)
-texture = ExtResource("2_uagsh")
+texture = ExtResource("2_tbwkm")
 
 [node name="blood_particles" type="CPUParticles2D" parent="sprite"]
+position = Vector2(14, 0)
 scale = Vector2(0.25, 0.25)
 emitting = false
 amount = 12
@@ -41,9 +43,9 @@ scale_amount_max = 100.0
 color = Color(0.627451, 0, 0, 1)
 
 [node name="effect_container" type="ItemList" parent="sprite"]
-offset_left = -68.0
+offset_left = -56.0
 offset_top = 44.0
-offset_right = 74.0
+offset_right = 86.0
 offset_bottom = 120.0
 focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x2tb4")
