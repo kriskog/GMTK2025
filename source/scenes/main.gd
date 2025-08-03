@@ -105,7 +105,7 @@ func _on_credits() -> void:
 #(~10s or await Global.Audio_manager.sound_finished) or require confirmation
 #by the user before moving on to rolling credits. Await cannot be used in a signal function.
 func _on_victory() -> void:
-	roll_credits()
+	transition_to_scene(Global.VIC_SCENE)
 	Global.current_loop = 0
 
 
