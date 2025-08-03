@@ -2,6 +2,7 @@ extends Node
 
 var turncount
 var charlist = []
+var dead_characters = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +15,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	update_labels()
+	pass
 
 
 func fill_charlist() -> void:
@@ -22,6 +23,7 @@ func fill_charlist() -> void:
 	charlist.append($PlayableCharacter2)
 	charlist.append($PlayableCharacter3)
 	charlist.append($PlayableCharacter4)
+	charlist.append($EnemyCharacter)
 
 
 func _on_combat_menu_turn_end(character) -> void:
@@ -33,8 +35,15 @@ func _on_combat_menu_turn_end(character) -> void:
 		turncount %= charlist.size()
 		if charlist[turncount].get_stat_total(Global.Stats.HEALTH) > 0:
 			charlist[turncount].is_turn = true
+			if turncount == 4:
+				charlist[turncount].handle_turn()
 		else:
-			_on_combat_menu_turn_end(charlist[turncount])
+			# Not perfect but should work for now
+			dead_characters += 1
+			if dead_characters < 4:
+				_on_combat_menu_turn_end(charlist[turncount])
+			else:
+				get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
 			#while charlist[turncount].get_stat_total(Global.Stats.HEALTH) <= 0:
 			#if turncount == 3:
 			#turncount = 0
@@ -75,3 +84,7 @@ func update_labels() -> void:
 			player.get_stat_total(Global.Stats.SPEED)
 		]
 	)
+
+
+func _on_enemy_character_dead() -> void:
+	get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
