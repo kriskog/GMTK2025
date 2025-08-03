@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://mxk1b2xfj0n5"
+path="res://.godot/imported/Normal Hit 2.ogg-94766e256bc52fe3b64ca7018f6f07d1.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Damare/Normal Hit 2.ogg"
+dest_files=["res://.godot/imported/Normal Hit 2.ogg-94766e256bc52fe3b64ca7018f6f07d1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

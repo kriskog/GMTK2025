@@ -113,6 +113,13 @@ func take_damage(val: int, ignore_defend: bool = false) -> int:
 	if statuses.has(Global.Status.DAMN):
 		damage_taken *= 2
 	damage_taken = clamp(damage_taken, -Global.MAX_DAMAGE, Global.MAX_DAMAGE)
+	if damage_taken < 0:
+		SignalBus.buff.emit()
+	elif damage_taken > 700:
+		SignalBus.attack3.emit()
+	else:
+		SignalBus.attack1.emit()
+
 	update_state(Global.Stats.HEALTH, -damage_taken)
 	return damage_taken
 
