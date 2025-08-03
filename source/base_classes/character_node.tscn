@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkktxruckx1pq"]
+[gd_scene load_steps=18 format=3 uid="uid://dkktxruckx1pq"]
 
 [ext_resource type="Texture2D" uid="uid://bn06227g1k36k" path="res://assets/sprites/Paladin.png" id="1_gurl6"]
 [ext_resource type="Script" path="res://source/base_classes/character_node.gd" id="1_wkvn8"]
@@ -13,6 +13,20 @@ bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5s7e"]
 bg_color = Color(0, 0, 0.921569, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0bc0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s5spx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqevy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xldna"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kmnk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amlgp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_etvft"]
 
 [sub_resource type="Animation" id="Animation_koe58"]
 length = 0.001
@@ -94,6 +108,21 @@ scale_amount_min = 20.0
 scale_amount_max = 20.0
 color = Color(0.627451, 0, 0, 1)
 
+[node name="effect_container" type="ItemList" parent="sprite"]
+offset_left = -68.0
+offset_top = 44.0
+offset_right = 69.0
+offset_bottom = 102.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b0bc0")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_s5spx")
+theme_override_styles/hovered = SubResource("StyleBoxEmpty_yqevy")
+theme_override_styles/selected = SubResource("StyleBoxEmpty_xldna")
+theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_6kmnk")
+theme_override_styles/cursor_unfocused = SubResource("StyleBoxEmpty_amlgp")
+theme_override_styles/cursor = SubResource("StyleBoxEmpty_etvft")
+max_columns = 10
+
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../sprite")
 libraries = {
@@ -104,10 +133,10 @@ libraries = {
 top_level = false
 anchors_preset = -1
 anchor_left = 0.164
-offset_left = 71.0
-offset_top = -146.0
-offset_right = 553.0
-offset_bottom = 182.0
+offset_left = 120.0
+offset_top = -144.0
+offset_right = 600.0
+offset_bottom = 184.0
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
 [connection signal="turn_end" from="CombatMenu" to="." method="_on_combat_menu_turn_end"]

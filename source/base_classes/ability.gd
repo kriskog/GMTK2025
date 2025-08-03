@@ -19,6 +19,8 @@ extends Resource
 @export var damage_attribute: Global.Stats = Global.Stats.STRENGTH
 @export var effect_base: EffectBase = null
 @export var target_number: Global.TargetNumber = Global.TargetNumber.ONE
+@export var restore_mana: bool = false
+@export var mana_restored: int = 0
 #endregion
 
 #region PublicVars

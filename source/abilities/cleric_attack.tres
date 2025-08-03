@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://d1ukoxfrxcpdt"]
+
+[ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_nermb"]
+
+[resource]
+script = ExtResource("1_nermb")
+name = "Basic Attack"
+mana_cost = 0
+target = 1
+deals_damage = true
+base_damage = 200
+damage_attribute = 4
+target_number = 0
+restore_mana = true
+mana_restored = 200

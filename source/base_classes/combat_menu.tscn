@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://chp32cemfwlbk"]
+[gd_scene load_steps=3 format=3 uid="uid://chp32cemfwlbk"]
 
 [ext_resource type="Script" path="res://source/base_classes/combat_menu.gd" id="1_uvyjh"]
+[ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="2_n6fns"]
 
 [node name="CombatMenu" type="Control"]
 top_level = true
@@ -9,7 +10,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -8.0
-offset_right = -1437.0
+offset_right = -1440.0
 offset_bottom = -759.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -22,41 +23,59 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -256.0
-offset_bottom = 314.0
+offset_left = -483.0
+offset_top = 8.0
+offset_right = -250.0
+offset_bottom = 322.0
 grow_horizontal = 0
 
 [node name="Attack" type="Button" parent="ActionList"]
 layout_mode = 2
+theme = ExtResource("2_n6fns")
+theme_override_font_sizes/font_size = 25
 text = "Attack"
+flat = true
 
 [node name="Defend" type="Button" parent="ActionList"]
+visible = false
 layout_mode = 2
+theme = ExtResource("2_n6fns")
 text = "Defend"
+flat = true
 
 [node name="Abilities" type="MenuButton" parent="ActionList"]
 layout_mode = 2
+theme = ExtResource("2_n6fns")
+theme_override_font_sizes/font_size = 25
 text = "Abilities"
 
 [node name="AllyList" type="ItemList" parent="."]
 layout_mode = 1
-offset_right = 224.0
-offset_bottom = 320.0
+offset_left = -192.0
+offset_top = 8.0
+offset_bottom = 328.0
+theme = ExtResource("2_n6fns")
 
 [node name="EnemyList" type="ItemList" parent="."]
 layout_mode = 1
-offset_right = 224.0
-offset_bottom = 320.0
+offset_left = -192.0
+offset_top = 8.0
+offset_bottom = 328.0
+theme = ExtResource("2_n6fns")
 
 [node name="AllList" type="ItemList" parent="."]
 layout_mode = 0
-offset_right = 224.0
-offset_bottom = 320.0
+offset_left = -192.0
+offset_top = 8.0
+offset_bottom = 328.0
+theme = ExtResource("2_n6fns")
 
 [node name="SelfList" type="ItemList" parent="."]
 layout_mode = 0
-offset_right = 224.0
-offset_bottom = 320.0
+offset_left = -192.0
+offset_top = 8.0
+offset_bottom = 328.0
+theme = ExtResource("2_n6fns")
 
 [connection signal="pressed" from="ActionList/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ActionList/Defend" to="." method="_on_defend_pressed"]

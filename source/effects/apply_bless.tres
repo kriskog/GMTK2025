@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EffectBase" load_steps=2 format=3 uid="uid://btpyr8aco7l11"]
+[gd_resource type="Resource" script_class="EffectBase" load_steps=3 format=3 uid="uid://btpyr8aco7l11"]
 
+[ext_resource type="Texture2D" uid="uid://dofxa03i3x4lg" path="res://assets/icons/bless.png" id="1_2n8mu"]
 [ext_resource type="Script" path="res://source/base_classes/effect_base.gd" id="1_sg3nm"]
 
 [resource]
@@ -19,3 +20,4 @@ damage_over_time = false
 damage = 0
 damage_attribute = 0
 status = 3
+eff_icon = ExtResource("1_2n8mu")
