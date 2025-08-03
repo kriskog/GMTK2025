@@ -25,7 +25,7 @@ var _turn_starting: bool = false
 #region OnReadyVars
 @onready var combat_menu: CombatMenu = $CombatMenu
 @onready var animation: AnimationPlayer = $animation
-@onready var _blood_particles: CPUParticles2D = $blood_particles
+@onready var _blood_particles: CPUParticles2D = $sprite/blood_particles
 #endregion
 
 
@@ -51,11 +51,13 @@ func _process(_delta: float) -> void:
 
 
 #region PublicMethods
-func take_damage(val: int) -> void:
-	super.take_damage(val)
-	self.add_child(DamageNumber.new(val))
-	_blood_particles.restart()
-	_blood_particles.emitting = true
+func take_damage(val: int, ignore_defend: bool = false) -> int:
+	var total_damage = super.take_damage(val, ignore_defend)
+	self.add_child(DamageNumber.new(total_damage))
+	if total_damage > 0:
+		_blood_particles.restart()
+		_blood_particles.emitting = true
+	return total_damage
 
 
 func handle_turn() -> void:

@@ -7,13 +7,15 @@ func _init(value: int):
 
 
 func display_number(value: int):
-	text = str(value)
+	text = str(abs(value))
 	z_index = 5
 	label_settings = LabelSettings.new()
 
 	var colour = "#FFF"
 	if value == 0:
 		colour = "#FFF8"
+	if value < 0:
+		colour = "#0F0"
 
 	label_settings.font_color = colour
 	label_settings.font_size = 40
@@ -24,7 +26,7 @@ func display_number(value: int):
 
 	await tree_entered
 
-	var tween = get_tree().create_tween()
+	var tween = self.create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(self, "position:y", position.y - 24, 0.20).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position:y", position.y, 0.25).set_ease(Tween.EASE_IN).set_delay(
@@ -34,4 +36,4 @@ func display_number(value: int):
 	tween.tween_property(self, "position", size / 2, 0.25).set_ease(Tween.EASE_IN).set_delay(0.5)
 
 	await tween.finished
-	queue_free()
+	self.queue_free()
