@@ -77,6 +77,8 @@ func spend_mana(val: int) -> bool:
 	var ret_val = super.spend_mana(val)
 	_mana_bar.value = get_stat_total(Global.Stats.MANA)
 	return ret_val
+
+
 #endregion
 
 #region PrivateMethods
