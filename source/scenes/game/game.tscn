@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://source/scenes/game/pause_button.gd" id="6_brkmx"]
 [ext_resource type="Texture2D" uid="uid://cnffjmtkh7vw6" path="res://assets/sprites/Ranger.png" id="7_1x6u6"]
 [ext_resource type="Texture2D" uid="uid://brcau6xyee5mw" path="res://assets/sprites/Mage.png" id="8_51qtb"]
-[ext_resource type="Resource" uid="uid://b1gsjksibo053" path="res://source/abilities/heal.tres" id="8_arku4"]
+[ext_resource type="Resource" uid="uid://h5xi8vcdmjvv" path="res://source/abilities/heal.tres" id="8_arku4"]
 [ext_resource type="Texture2D" uid="uid://76umvqpt3aj" path="res://assets/sprites/Cleric.png" id="9_63wxa"]
 [ext_resource type="Resource" uid="uid://buatatqnadfig" path="res://source/abilities/holy_shield.tres" id="9_e147k"]
 [ext_resource type="Resource" uid="uid://bb3hjwrroyg26" path="res://source/abilities/provoke.tres" id="10_h37q8"]
@@ -25,7 +25,7 @@
 [ext_resource type="Resource" uid="uid://w3jn2np8cx2p" path="res://source/abilities/fourth_attack.tres" id="15_y3qdq"]
 [ext_resource type="Resource" uid="uid://8nsm4r0omrxa" path="res://source/abilities/siphon_magic.tres" id="16_8vs32"]
 [ext_resource type="Resource" uid="uid://bhx3sgg1ie6dk" path="res://source/abilities/final_attack.tres" id="16_s8qej"]
-[ext_resource type="Resource" uid="uid://byajlsyhpku3u" path="res://source/abilities/prayer.tres" id="18_isofv"]
+[ext_resource type="Resource" uid="uid://vsq2orguraei" path="res://source/abilities/prayer.tres" id="18_isofv"]
 [ext_resource type="Resource" uid="uid://bpqaqukq2sqar" path="res://source/abilities/damn.tres" id="19_rekyx"]
 [ext_resource type="Resource" uid="uid://bwtqf1v5ual6m" path="res://source/abilities/haste.tres" id="20_y4ny8"]
 
