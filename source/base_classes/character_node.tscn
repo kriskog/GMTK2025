@@ -47,19 +47,19 @@ script = ExtResource("1_wkvn8")
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_gurl6")
 
-[node name="blood_particles" type="CPUParticles2D" parent="."]
+[node name="blood_particles" type="CPUParticles2D" parent="sprite"]
 emitting = false
 amount = 12
 one_shot = true
 explosiveness = 0.85
 emission_shape = 3
-emission_rect_extents = Vector2(200, 200)
+emission_rect_extents = Vector2(50, 50)
 spread = 180.0
 gravity = Vector2(0, 9800)
 initial_velocity_min = 1000.0
 initial_velocity_max = 1000.0
-scale_amount_min = 100.0
-scale_amount_max = 100.0
+scale_amount_min = 20.0
+scale_amount_max = 20.0
 color = Color(0.627451, 0, 0, 1)
 
 [node name="CombatMenu" parent="." instance=ExtResource("2_hcpvi")]

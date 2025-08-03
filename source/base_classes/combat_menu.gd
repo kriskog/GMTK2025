@@ -30,6 +30,7 @@ var _basic_attack: bool = false
 @onready var enemy_list = $EnemyList
 @onready var ally_list = $AllyList
 @onready var all_list = $AllList
+@onready var self_list = $SelfList
 #endregion
 
 
@@ -52,6 +53,8 @@ func initialize(new_allies: Array[CharacterNode], new_enemies: Array[BossNode]) 
 
 	for enemy in enemies:
 		enemy_list.add_item(enemy["character_name"].capitalize())
+
+	self_list.add_item("Self")
 
 	_reset_menu()
 
@@ -77,6 +80,7 @@ func _reset_menu() -> void:
 	enemy_list.visible = false
 	all_list.visible = false
 	all_list.clear()
+	self_list.visible = false
 	_chosen_ability = -1
 	_basic_attack = false
 
@@ -90,14 +94,19 @@ func _ability_pressed(id: int) -> void:
 		print("Not enough mana!!!")
 		_chosen_ability = -1
 	else:
-		if character.abilities[id].affects_all:
+		if character.abilities[id].target_number == Global.TargetNumber.SELF:
+			self_list.visible = true
+
+		elif character.abilities[id].target_number == Global.TargetNumber.ALL:
 			if target == Global.Target.ENEMY:
 				all_list.add_item("All Enemies")
 			else:
 				all_list.add_item("All Allies")
 			all_list.visible = true
+
 		elif target == Global.Target.ENEMY:
 			enemy_list.visible = true
+
 		else:
 			ally_list.visible = true
 
@@ -131,11 +140,24 @@ func _on_enemy_list_item_clicked(
 
 
 func _on_all_list_item_clicked(
-	index: int, _at_position: Vector2, _mouse_button_index: int
+	_index: int, _at_position: Vector2, _mouse_button_index: int
 ) -> void:
 	var target_side: Array = enemies
 	if character.abilities[_chosen_ability].target == Global.Target.ALLY:
 		target_side = allies
+
+	if _basic_attack:
+		character.use_ability_on_target(character.BASIC_ATTACK_INDEX, target_side, -1)
+	else:
+		character.use_ability_on_target(_chosen_ability, target_side, -1)
+	turn_end.emit()
+	_reset_menu()
+
+
+func _on_self_list_item_clicked(
+	_index: int, _at_position: Vector2, _mouse_button_index: int
+) -> void:
+	var target_side: Array = allies
 
 	if _basic_attack:
 		character.use_ability_on_target(character.BASIC_ATTACK_INDEX, target_side, -1)

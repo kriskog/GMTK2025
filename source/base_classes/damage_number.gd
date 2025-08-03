@@ -7,13 +7,15 @@ func _init(value: int):
 
 
 func display_number(value: int):
-	text = str(value)
+	text = str(abs(value))
 	z_index = 5
 	label_settings = LabelSettings.new()
 
 	var colour = "#FFF"
 	if value == 0:
 		colour = "#FFF8"
+	if value < 0:
+		colour = "#0F0"
 
 	label_settings.font_color = colour
 	label_settings.font_size = 40

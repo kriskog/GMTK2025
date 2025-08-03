@@ -23,7 +23,7 @@ var _current_turn: int = 0
 #endregion
 
 #region OnReadyVars
-@onready var _blood_particles: CPUParticles2D = $blood_particles
+@onready var _blood_particles: CPUParticles2D = $sprite/blood_particles
 #endregion
 
 
@@ -32,7 +32,6 @@ var _current_turn: int = 0
 func _process(_delta: float) -> void:
 	if get_stat_total(Global.Stats.HEALTH) <= 0:
 		dead.emit()
-
 
 #endregion
 
@@ -54,11 +53,13 @@ func handle_turn() -> void:
 	turn_end.emit(self)
 
 
-func take_damage(val: int) -> void:
-	super.take_damage(val)
-	self.add_child(DamageNumber.new(val))
-	_blood_particles.restart()
-	_blood_particles.emitting = true
+func take_damage(val: int, ignore_defend: bool = false) -> int:
+	var total_damage: int = super.take_damage(val, ignore_defend)
+	self.add_child(DamageNumber.new(total_damage))
+	if total_damage > 0:
+		_blood_particles.restart()
+		_blood_particles.emitting = true
+	return total_damage
 
 
 #endregion
