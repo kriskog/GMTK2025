@@ -6,7 +6,6 @@ var transition_time := 0.5
 @onready var fader = $FadeLayer/Fader
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.main_menu.connect(_on_main_menu)

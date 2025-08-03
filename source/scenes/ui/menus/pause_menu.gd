@@ -1,8 +1,6 @@
 extends Control
 
-#region Signals
 signal unpaused
-#endregion
 
 
 # Called when the node enters the scene tree for the first time.

@@ -8,6 +8,8 @@ func _ready() -> void:
 	%HowToPlayButton.pressed.connect(_on_how_to_play_pressed)
 	%CreditsButton.pressed.connect(_on_credits_pressed)
 	%ExitGameButton.pressed.connect(_on_exit_game_pressed)
+	tree_entered.connect(_on_tree_entered)
+	_on_tree_entered()  # First signal went off before connecting.
 
 
 #region Signal funcs
@@ -18,14 +20,9 @@ func _on_tree_entered() -> void:
 	%StartGameButton.grab_focus()
 
 
-func _on_tree_exited() -> void:
-	pass
-
-
 func _on_start_game_pressed() -> void:
 	SignalBus.button_clicked.emit()
 	SignalBus.start_game.emit()
-	#get_tree().change_scene_to_file("res://source/scenes/game/game.tscn")
 
 
 func _on_how_to_play_pressed() -> void:
