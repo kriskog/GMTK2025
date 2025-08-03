@@ -13,5 +13,6 @@ const MAIN_MENU_SCENE = "res://source/scenes/ui/menus/main_menu.tscn"
 const CREDITS_SCENE = "res://source/scenes/ui/elements/creditsscreen.tscn"
 const GAME_SCENE = "res://source/scenes/game/game.tscn"
 const DEATH_SCENE = "res://source/scenes/ui/menus/death_screen.tscn"
+const VIC_SCENE = "res://source/scenes/ui/menus/vic_screen.tscn"
 
 var current_loop = 0
