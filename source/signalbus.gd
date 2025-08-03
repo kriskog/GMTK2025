@@ -17,6 +17,20 @@ signal victory
 signal game_over
 @warning_ignore("unused_signal")
 signal credits
+@warning_ignore("unused_signal")
+signal attack1
+@warning_ignore("unused_signal")
+signal attack2
+@warning_ignore("unused_signal")
+signal attack3
+@warning_ignore("unused_signal")
+signal attack4
+@warning_ignore("unused_signal")
+signal attack5
+@warning_ignore("unused_signal")
+signal buff
+@warning_ignore("unused_signal")
+signal debuff
 #endregion
 
 

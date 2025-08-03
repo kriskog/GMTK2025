@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://donqw0u7w78f5"
+path="res://.godot/imported/Weird Hit.ogg-06c17045a187e1a7df08e124c4949145.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Damare/Weird Hit.ogg"
+dest_files=["res://.godot/imported/Weird Hit.ogg-06c17045a187e1a7df08e124c4949145.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
