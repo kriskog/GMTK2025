@@ -20,11 +20,13 @@ var targets: Array[CharacterNode]
 
 #region PrivateVars
 var _current_turn: int = 0
+var _attacking: bool = false
 #endregion
 
 #region OnReadyVars
 @onready var _blood_particles: CPUParticles2D = $sprite/blood_particles
 @onready var _effect_container: ItemList = $sprite/effect_container
+@onready var animation: AnimationPlayer = $AnimationPlayer
 #endregion
 
 
@@ -44,19 +46,8 @@ func _process(_delta: float) -> void:
 
 #region PublicMethods
 func handle_turn() -> void:
-	_current_turn += 1
-	match _current_turn:
-		1:
-			_first_turn()
-		2:
-			_second_turn()
-		3:
-			_third_turn()
-		4:
-			_fourth_turn()
-		5:
-			_final_turn()
-	turn_end.emit(self)
+	_attacking = true
+	animation.play("move")
 
 
 func take_damage(val: int, ignore_defend: bool = false) -> int:
@@ -121,4 +112,24 @@ func _set_icons() -> void:
 	for effect in _effects:
 		if effect.eff_icon != null:
 			_effect_container.add_icon_item(effect.eff_icon)
+
+
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	if _attacking:
+		_current_turn += 1
+		match _current_turn:
+			1:
+				_first_turn()
+			2:
+				_second_turn()
+			3:
+				_third_turn()
+			4:
+				_fourth_turn()
+			5:
+				_final_turn()
+		turn_end.emit(self)
+		_attacking = false
+		animation.play_backwards("move")
+
 #endregion
