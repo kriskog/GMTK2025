@@ -30,7 +30,7 @@ applied to a character.
 @export var damage: int = 0
 @export var damage_attribute: Global.Stats
 @export var status: Global.Status
-
+@export var eff_icon: Texture2D
 #endregion
 
 #region PublicVars
