@@ -15,10 +15,5 @@ func _ready() -> void:
 	scale = Vector2(3, 3)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_finished() -> void:
 	queue_free()

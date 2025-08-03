@@ -24,9 +24,9 @@ var _attacking: bool = false
 #endregion
 
 #region OnReadyVars
+@onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var _blood_particles: CPUParticles2D = $sprite/blood_particles
 @onready var _effect_container: ItemList = $sprite/effect_container
-@onready var animation: AnimationPlayer = $AnimationPlayer
 #endregion
 
 
