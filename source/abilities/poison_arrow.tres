@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://b12babprrafcw"]
+
+[ext_resource type="Resource" uid="uid://hornpa81vfmc" path="res://source/effects/poison.tres" id="1_vxpip"]
+[ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_y3fgm"]
+
+[resource]
+script = ExtResource("1_y3fgm")
+name = "Item: Poison Arrow"
+mana_cost = 0
+target = 1
+deals_damage = false
+base_damage = 0
+damage_attribute = 5
+effect_base = ExtResource("1_vxpip")
+target_number = 0

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bpqaqukq2sqar"]
+
+[ext_resource type="Resource" uid="uid://ck2ttrmye5ba7" path="res://source/effects/apply_damn.tres" id="1_5pbp3"]
+[ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_ln3p5"]
+
+[resource]
+script = ExtResource("1_ln3p5")
+name = "Damn"
+mana_cost = 0
+target = 1
+deals_damage = false
+base_damage = 0
+damage_attribute = 7
+effect_base = ExtResource("1_5pbp3")
+target_number = 0

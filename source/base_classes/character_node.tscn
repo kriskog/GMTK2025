@@ -1,8 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkktxruckx1pq"]
+[gd_scene load_steps=11 format=3 uid="uid://dkktxruckx1pq"]
 
 [ext_resource type="Texture2D" uid="uid://bn06227g1k36k" path="res://assets/sprites/Paladin.png" id="1_gurl6"]
 [ext_resource type="Script" path="res://source/base_classes/character_node.gd" id="1_wkvn8"]
 [ext_resource type="PackedScene" uid="uid://chp32cemfwlbk" path="res://source/base_classes/combat_menu.tscn" id="2_hcpvi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twvql"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bfly"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpdwk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5s7e"]
+bg_color = Color(0, 0, 0.921569, 1)
 
 [sub_resource type="Animation" id="Animation_koe58"]
 length = 0.001
@@ -47,6 +57,28 @@ script = ExtResource("1_wkvn8")
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_gurl6")
 
+[node name="HealthBar" type="ProgressBar" parent="sprite"]
+offset_left = -64.0
+offset_top = -88.0
+offset_right = 64.0
+offset_bottom = -80.0
+theme_override_styles/background = SubResource("StyleBoxFlat_twvql")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7bfly")
+max_value = 0.0
+step = 1.0
+show_percentage = false
+
+[node name="ManaBar" type="ProgressBar" parent="sprite"]
+offset_left = -64.0
+offset_top = -72.0
+offset_right = 64.0
+offset_bottom = -64.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qpdwk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y5s7e")
+max_value = 0.0
+step = 1.0
+show_percentage = false
+
 [node name="blood_particles" type="CPUParticles2D" parent="sprite"]
 emitting = false
 amount = 12
@@ -62,20 +94,20 @@ scale_amount_min = 20.0
 scale_amount_max = 20.0
 color = Color(0.627451, 0, 0, 1)
 
-[node name="CombatMenu" parent="." instance=ExtResource("2_hcpvi")]
-top_level = false
-anchors_preset = -1
-anchor_left = 0.164
-offset_left = 45.0
-offset_top = -171.0
-offset_right = 536.0
-offset_bottom = 160.0
-
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../sprite")
 libraries = {
 "": SubResource("AnimationLibrary_gqgum")
 }
 
-[connection signal="turn_end" from="CombatMenu" to="." method="_on_combat_menu_turn_end"]
+[node name="CombatMenu" parent="." instance=ExtResource("2_hcpvi")]
+top_level = false
+anchors_preset = -1
+anchor_left = 0.164
+offset_left = 71.0
+offset_top = -146.0
+offset_right = 553.0
+offset_bottom = 182.0
+
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
+[connection signal="turn_end" from="CombatMenu" to="." method="_on_combat_menu_turn_end"]
