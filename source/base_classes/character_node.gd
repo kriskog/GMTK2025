@@ -88,7 +88,10 @@ func add_effect(effect: Effect) -> void:
 func decay_effects(val: int = 1) -> void:
 	super.decay_effects(val)
 	_set_icons()
+
+
 #endregion
+
 
 #region PrivateMethods
 func _set_icons() -> void:
@@ -96,6 +99,8 @@ func _set_icons() -> void:
 	for effect in _effects:
 		if effect.eff_icon != null:
 			_effect_container.add_icon_item(effect.eff_icon)
+
+
 #endregion
 
 

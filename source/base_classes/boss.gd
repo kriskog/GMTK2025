@@ -68,7 +68,6 @@ func take_damage(val: int, ignore_defend: bool = false) -> int:
 	return total_damage
 
 
-
 func add_effect(effect: Effect) -> void:
 	super.add_effect(effect)
 	_set_icons()
@@ -77,6 +76,7 @@ func add_effect(effect: Effect) -> void:
 func decay_effects(val: int = 1) -> void:
 	super.decay_effects(val)
 	_set_icons()
+
 
 #endregion
 
