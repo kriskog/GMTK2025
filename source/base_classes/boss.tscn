@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkktxruckx1pq"]
+[gd_scene load_steps=2 format=3 uid="uid://dp1v0igq647xo"]
 
-[ext_resource type="Script" path="res://source/base_classes/character_node.gd" id="1_wkvn8"]
+[ext_resource type="Script" path="res://source/base_classes/boss.gd" id="1_fq40b"]
 
-[node name="CharacterNode" type="Node2D"]
-script = ExtResource("1_wkvn8")
+[node name="Boss" type="Node2D"]
+script = ExtResource("1_fq40b")
 
 [node name="character_sprite" type="Sprite2D" parent="."]
 

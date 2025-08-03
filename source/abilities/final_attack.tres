@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bhx3sgg1ie6dk"]
+
+[ext_resource type="Script" path="res://source/base_classes/ability.gd" id="1_2qxte"]
+
+[resource]
+script = ExtResource("1_2qxte")
+name = "FInal Attack"
+mana_cost = 0
+target = 1
+deals_damage = true
+base_damage = 9499
+damage_attribute = 4
