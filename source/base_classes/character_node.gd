@@ -32,9 +32,10 @@ var _turn_starting: bool = false
 #region BuiltinMethods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	combat_menu.character = self
-	combat_menu.hide()
-	$sprite.texture = texture
+	if not Engine.is_editor_hint():
+		combat_menu.character = self
+		combat_menu.hide()
+		$sprite.texture = texture
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

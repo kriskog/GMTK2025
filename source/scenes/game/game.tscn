@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b8wo6054qwir"]
+[gd_scene load_steps=22 format=3 uid="uid://b8wo6054qwir"]
 
 [ext_resource type="Script" path="res://source/scenes/game/game.gd" id="1_j8onw"]
 [ext_resource type="PackedScene" uid="uid://dkktxruckx1pq" path="res://source/base_classes/character_node.tscn" id="2_bdwci"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://cnffjmtkh7vw6" path="res://assets/sprites/Ranger.png" id="7_1x6u6"]
 [ext_resource type="Texture2D" uid="uid://brcau6xyee5mw" path="res://assets/sprites/Mage.png" id="8_51qtb"]
 [ext_resource type="Texture2D" uid="uid://76umvqpt3aj" path="res://assets/sprites/Cleric.png" id="9_63wxa"]
+[ext_resource type="Resource" uid="uid://bo5at62y6wj4c" path="res://source/abilities/first_attack.tres" id="12_rg273"]
+[ext_resource type="Resource" uid="uid://cjnlpfuhdh6nl" path="res://source/abilities/second_attack.tres" id="13_dppcr"]
+[ext_resource type="Resource" uid="uid://dmxhu7w7q1dqq" path="res://source/abilities/third_attack.tres" id="14_35rci"]
+[ext_resource type="Resource" uid="uid://w3jn2np8cx2p" path="res://source/abilities/fourth_attack.tres" id="15_y3qdq"]
+[ext_resource type="Resource" uid="uid://bhx3sgg1ie6dk" path="res://source/abilities/final_attack.tres" id="16_s8qej"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4448"]
 
@@ -138,4 +143,15 @@ character_name = "Me"
 
 [node name="EnemyCharacter" parent="EnemyCharacters" instance=ExtResource("5_0ws3h")]
 position = Vector2(450, 536)
+abilities = Array[ExtResource("3_6wv2w")]([ExtResource("12_rg273"), ExtResource("13_dppcr"), ExtResource("14_35rci"), ExtResource("15_y3qdq"), ExtResource("16_s8qej")])
+_stats = {
+0: 5750,
+1: 4600,
+2: 0,
+3: 0,
+4: 500,
+5: 500,
+6: 500,
+7: 0
+}
 character_name = "BIGBOYE"
